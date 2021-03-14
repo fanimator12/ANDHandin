@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">InitialApp</string>
+    <string name="my_bucket_list">My Bucket List</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="mainpicture">mainPicture</string>
+    <string name="all">All</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="completed">Completed</string>
+</resources>
