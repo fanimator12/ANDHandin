@@ -25,9 +25,9 @@
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.example.initialapp.GalleryFragment"
+        android:name="com.example.initialapp.WishlistGalleryFragment"
         android:label="MonitorFragment"
-        tools:layout="@layout/gallery_fragment">
+        tools:layout="@layout/fragment_wishlistgallery">
         <action
             android:id="@+id/action_galleryFragment_to_allGalleryFragment"
             app:destination="@id/allGalleryFragment" />

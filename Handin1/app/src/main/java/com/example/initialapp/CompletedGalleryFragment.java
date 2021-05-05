@@ -4,9 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,12 +12,12 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.tabs.TabItem;
 
-public class AllGalleryFragment extends Fragment {
+public class CompletedGalleryFragment extends Fragment {
 
     private TabItem allTabItem;
     private TabItem wishlistTabItem;
     private TabItem completedTabItem;
-    private View allGalleryView;
+    private View galleryView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,21 +25,12 @@ public class AllGalleryFragment extends Fragment {
     }
 
     @Nullable
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        allGalleryView = inflater.inflate(R.layout.fragment_allgallery,container,false);
-        initializeFragmentsValues();
+        galleryView = inflater.inflate(R.layout.fragment_completedgallery,container,false);
         allTabItem.setOnClickListener(view -> {
-            Navigation.findNavController(allGalleryView).navigate(R.id.action_allGalleryFragment_to_galleryFragment); // TODO update navigation
+            Navigation.findNavController(galleryView).navigate(R.id.action_galleryFragment_to_allGalleryFragment); // TODO update navigation
         });
 
-        return allGalleryView;
-    }
-
-    private void initializeFragmentsValues() {
-        allTabItem = allGalleryView.findViewById(R.id.allTab);
-        wishlistTabItem = allGalleryView.findViewById(R.id.wishlistTab);
-        completedTabItem = allGalleryView.findViewById(R.id.completedTab);
-
+        return galleryView;
     }
 }

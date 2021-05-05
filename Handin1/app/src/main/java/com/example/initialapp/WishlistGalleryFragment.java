@@ -10,8 +10,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-public class GalleryFragment extends Fragment {
+import com.google.android.material.tabs.TabItem;
 
+public class WishlistGalleryFragment extends Fragment {
+
+    private TabItem allTabItem;
+    private TabItem wishlistTabItem;
+    private TabItem completedTabItem;
     private View galleryView;
 
     @Override
@@ -21,10 +26,9 @@ public class GalleryFragment extends Fragment {
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        galleryView = inflater.inflate(R.layout.gallery_fragment,container,false);
-        initializeFragmentsValues();
-        loginButton.setOnClickListener(view -> {
-            Navigation.findNavController(galleryView).navigate(R.id.action_galleryFragment_to_allGalleryFragment);
+        galleryView = inflater.inflate(R.layout.fragment_wishlistgallery,container,false);
+        allTabItem.setOnClickListener(view -> {
+            Navigation.findNavController(galleryView).navigate(R.id.action_galleryFragment_to_allGalleryFragment); // TODO update navigation
         });
 
         return galleryView;
