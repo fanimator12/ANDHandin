@@ -32,10 +32,10 @@
         app:backgroundTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.345" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:autofillHints=""
         android:ems="10"
+        android:text="AND"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColor="#AEA8A8"
@@ -60,9 +61,10 @@
         android:id="@+id/editTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="60dp"
         android:autofillHints=""
         android:ems="10"
+        android:text="user@email.com"
         android:hint="@string/e_mail"
         android:inputType="textEmailAddress"
         android:textColor="#AEA8A8"
@@ -73,5 +75,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:textColorHint="#AEA8A8" />
+
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

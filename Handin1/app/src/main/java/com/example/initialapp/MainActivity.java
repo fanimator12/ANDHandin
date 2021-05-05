@@ -1,14 +1,18 @@
 package com.example.initialapp;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     EditText passText;
     Button loginButton;
     TextView info;
+    private View loginView;
     private int counter = 5;
     static final String ALL_GALLERY = "com.example.initialapp.ALL_GALLERY";
 
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     private void validate(String email, String password){
         if((email.equals("user@email.com")) && (password.equals("AND"))){ //TODO, must change
-            Intent intent = new Intent(MainActivity.this, AllGalleryActivity.class);
+            Intent intent = new Intent(MainActivity.this, AllGalleryFragment.class);
             startActivity(intent);
         } else {
             counter--;
@@ -70,5 +75,24 @@ public class MainActivity extends AppCompatActivity {
                 loginButton.setEnabled(false);
             }
         }
+    }
+
+    @Nullable
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        loginView = inflater.inflate(R.layout.activity_main,container,false);
+        initializeFragmentsValues();
+        loginButton.setOnClickListener(view -> {
+            Navigation.findNavController(loginView).navigate(R.id.action_mainActivity_to_allGalleryFragment);
+        });
+
+        return loginView;
+    }
+
+    private void initializeFragmentsValues() {
+        loginButton = loginView.findViewById(R.id.loginButton);
+        emailText = loginView.findViewById(R.id.editTextEmailAddress);
+        passText = loginView.findViewById(R.id.editTextPassword);
+        info = loginView.findViewById(R.id.errorTextView);
+
     }
 }
