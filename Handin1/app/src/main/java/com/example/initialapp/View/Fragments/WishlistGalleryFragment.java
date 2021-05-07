@@ -1,4 +1,4 @@
-package com.example.initialapp;
+package com.example.initialapp.View.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.initialapp.R;
+import com.example.initialapp.Viewmodel.WishlistGalleryViewModel;
 import com.google.android.material.tabs.TabItem;
 
 public class WishlistGalleryFragment extends Fragment {
@@ -18,6 +20,8 @@ public class WishlistGalleryFragment extends Fragment {
     private TabItem wishlistTabItem;
     private TabItem completedTabItem;
     private View galleryView;
+
+    private WishlistGalleryViewModel wishlistGalleryViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

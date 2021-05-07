@@ -1,4 +1,4 @@
-package com.example.initialapp;
+package com.example.initialapp.View.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +17,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.initialapp.View.Fragments.AllGalleryFragment;
+import com.example.initialapp.R;
 
 public class MainActivity extends AppCompatActivity {
     EditText emailText;

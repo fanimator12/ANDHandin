@@ -6,7 +6,7 @@
     app:startDestination="@id/allGalleryFragment">
     <fragment
         android:id="@+id/mainActivity"
-        android:name="com.example.initialapp.MainActivity"
+        android:name="com.example.initialapp.View.Activities.MainActivity"
         android:label="LoginActivity"
         tools:layout="@layout/activity_main"
         >
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/allGalleryFragment"
-        android:name="com.example.initialapp.AllGalleryFragment"
+        android:name="com.example.initialapp.View.Fragments.AllGalleryFragment"
         android:label="AllGalleryFragment"
         tools:layout="@layout/fragment_allgallery">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.example.initialapp.WishlistGalleryFragment"
+        android:name="com.example.initialapp.View.Fragments.WishlistGalleryFragment"
         android:label="MonitorFragment"
         tools:layout="@layout/fragment_wishlistgallery">
         <action
