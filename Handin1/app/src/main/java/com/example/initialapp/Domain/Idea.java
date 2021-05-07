@@ -2,9 +2,9 @@ package com.example.initialapp.Domain;
 
 public class Idea {
 
-    private String activity;
+    private String idea;
 
-    public String getActivity() {
-        return activity;
+    public String getIdea() {
+        return idea;
     }
 }

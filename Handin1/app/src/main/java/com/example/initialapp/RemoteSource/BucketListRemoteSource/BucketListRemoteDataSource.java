@@ -10,14 +10,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BucketListRemoteDataSource {
+public class BucketListRemoteDataSource implements IBucketListRemoteDataSource {
     private IBucketListGenerator bucketListGenerator;
 
     public BucketListRemoteDataSource() {
-     //   bucketListGenerator = new BucketListGenerator();
+        bucketListGenerator = new BucketListGenerator();
     }
 
-   // @Override
+    @Override
     public void getIdea() {
         BucketListAPI bucketListAPI = bucketListGenerator.getIdeaAPI();
         Call<Idea> call = bucketListAPI.getIdea(1);

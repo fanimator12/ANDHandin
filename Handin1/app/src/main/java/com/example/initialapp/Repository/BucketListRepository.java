@@ -11,7 +11,7 @@ public class BucketListRepository implements IBucketListRepository {
     //TODO add model here
 
     public BucketListRepository(Application application) {
-       // bucketListRemoteDataSource = new BucketListRemoteDataSource();
+        bucketListRemoteDataSource = new BucketListRemoteDataSource();
     }
 
     @Override
