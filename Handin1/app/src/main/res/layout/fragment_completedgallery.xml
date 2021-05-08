@@ -40,11 +40,4 @@
 
     </LinearLayout>
 
-    <GridLayout
-        android:id="@+id/galleryGridLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnCount="2"
-        android:rowCount="5" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
