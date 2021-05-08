@@ -14,6 +14,7 @@ Following the MoSCoW prioritized requirements -
 
       - MUST HAVE:
             - Login, Logout functionality
+            - Create bucket list activities manually
             - Tab layout with multiple tab items [ ALL | WISHLIST | COMPLETED ]
             - Layout with pictures respecting bucket list items
             - Descriptions of bucket list deals

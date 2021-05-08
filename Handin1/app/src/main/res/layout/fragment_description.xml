@@ -43,11 +43,11 @@
 
     <TextView
         android:id="@+id/ideaTitle"
-        android:layout_width="103dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_width="106dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="24dp"
         android:text="TITLE"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
@@ -58,25 +58,13 @@
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginRight="36dp"
         android:text="location"
         android:textColor="#B1B1B1"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="364dp"
-        android:layout_height="227dp"
-        android:layout_marginTop="92dp"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc luctus sodales felis quis scelerisque. Suspendisse condimentum tortor et elementum bibendum. Cras sed placerat augue. Mauris pretium erat consequat porttitor tempus. Etiam mollis sem ut orci mollis ultricies. Suspendisse tincidunt felis vitae orci commodo, vitae elementum lorem congue. Donec sit amet pellentesque nulla. Aliquam tincidunt finibus dui vel tincidunt. Quisque non lacus vel ipsum blandit porta ac vel dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam augue purus, luctus nec mattis ac, eleifend eget massa. Maecenas porta quam vel erat consectetur, non tempus felis imperdiet. Nam at ultrices ante, ac finibus lectus."
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
