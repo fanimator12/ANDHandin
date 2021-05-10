@@ -2,7 +2,7 @@
  
 TOPIC:
 
-Bucket List Maker
+Bucket List Organizer
 
 BRIEF DESCRIPTION:
 
