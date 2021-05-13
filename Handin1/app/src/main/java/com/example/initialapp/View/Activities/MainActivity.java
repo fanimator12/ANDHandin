@@ -1,101 +1,72 @@
 package com.example.initialapp.View.Activities;
 
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.initialapp.View.Fragments.AllGalleryFragment;
+import com.example.initialapp.Adapter.IdeaAdapter;
+import com.example.initialapp.Adapter.SectionsPagerAdapter;
 import com.example.initialapp.R;
+import com.example.initialapp.View.Fragments.CreateFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
-public class MainActivity extends AppCompatActivity {
-    EditText emailText;
-    EditText passText;
-    Button loginButton;
-    TextView info;
-    private View loginView;
-    private int counter = 5;
-    static final String ALL_GALLERY = "com.example.initialapp.ALL_GALLERY";
+public class MainActivity extends AppCompatActivity implements IdeaAdapter.OnListIdeaClickListener {
 
-    private static final String TAG = "LoginActivity";
+    private TabItem allTabItem;
+    private TabItem wishlistTabItem;
+    private TabItem completedTabItem;
+    private TabLayout tabs;
+    private ViewPager viewPager;
+    private FloatingActionButton fab;
+
+    // for the bucket list recyclerview
+    RecyclerView mIdeaList;
+    IdeaAdapter mIdeaAdapter;
+
+    private View mainView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        info = findViewById(R.id.textView);
-        emailText = findViewById(R.id.editTextEmailAddress);
-        passText = findViewById(R.id.editTextPassword);
-        loginButton = findViewById(R.id.loginButton);
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 
-        Log.d(TAG, "onCreate was called");
+        // floating action button (+) navigates to Create Fragment
+        fab.setOnClickListener(view -> onClick(mainView)); //TODO it shows nullpointerexception
 
-        loginButton.setOnClickListener(view -> onClick(info));
+        // for changing between tabs
+        viewPager.setAdapter(sectionsPagerAdapter); //TODO it shows nullpointerexception
+        tabs.setupWithViewPager(viewPager);
 
-        Bundle bundle = getIntent().getExtras();
-
-        if (bundle != null && bundle.containsKey(ALL_GALLERY)) {
-            String message = bundle.getString(ALL_GALLERY);
-            info.setText(message);
-        }
-    }
-
-    @SuppressLint("SetTextI18n")
-    public void onClick(View view){
-        validate(emailText.getText().toString(), passText.getText().toString());
-
-        Context context = getApplicationContext();
-        String text = "Logging in...";
-        int duration = Toast.LENGTH_SHORT;
-        Toast.makeText(context, text, duration).show();
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void validate(String email, String password){
-        if((email.equals("user@email.com")) && (password.equals("AND"))){ //TODO, must change
-            Intent intent = new Intent(MainActivity.this, AllGalleryFragment.class);
-            startActivity(intent);
-        } else {
-            counter--;
-
-            info.setText("No of attempts remaining: " + String.valueOf(counter));
-
-            if(counter == 0){
-                loginButton.setEnabled(false);
-            }
-        }
-    }
-
-    @Nullable
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        loginView = inflater.inflate(R.layout.activity_main,container,false);
         initializeFragmentsValues();
-        loginButton.setOnClickListener(view -> {
-            Navigation.findNavController(loginView).navigate(R.id.action_mainActivity_to_allGalleryFragment);
-        });
 
-        return loginView;
+        mIdeaList.hasFixedSize();
+        mIdeaList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void initializeFragmentsValues() {
-        loginButton = loginView.findViewById(R.id.loginButton);
-        emailText = loginView.findViewById(R.id.editTextEmailAddress);
-        passText = loginView.findViewById(R.id.editTextPassword);
-        info = loginView.findViewById(R.id.errorTextView);
+        tabs = mainView.findViewById(R.id.tabLayout);
+        viewPager = mainView.findViewById(R.id.view_pager);
+        fab = mainView.findViewById(R.id.fab);
+    }
 
+    @Override
+    public void onListIdeaClick(int clickedIdeaIndex) {
+
+    }
+
+    public void onClick(View view) {
+        startActivity(new Intent(this, CreateFragment.class));
+        finish();
     }
 }

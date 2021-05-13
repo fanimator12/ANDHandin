@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="192dp"
+    android:layout_height="100dp"
     android:background="#e4e4e4">
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/idea_title"
         style="@style/IdeaTitle"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="Chair" />
+        android:text="@string/idea" />
 
     <ImageView
-        android:id="@+id/iv_icon"
-        android:layout_width="191dp"
+        android:id="@+id/idea_icon"
+        android:layout_width="184dp"
         android:layout_height="match_parent"
-        android:src="@drawable/ideaIcon" />
+        android:contentDescription="@string/ideaIcon"
+        android:src="@drawable/ideaicon" />
 </LinearLayout>

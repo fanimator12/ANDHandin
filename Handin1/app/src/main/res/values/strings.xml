@@ -4,10 +4,14 @@
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="mainpicture">mainPicture</string>
+    <string name="mainpicture">Main Picture</string>
     <string name="all">All</string>
     <string name="wishlist">Wishlist</string>
     <string name="completed">Completed</string>
     <string name="add_to_wishlist">Add to Wishlist</string>
     <string name="remove_from_wishlist">Remove from Wishlist</string>
+    <string name="create_new_activity">Create new bucket list activity</string>
+    <string name="addIdea">Add Idea</string>
+    <string name="idea">Idea</string>
+    <string name="ideaIcon">Idea Icon</string>
 </resources>

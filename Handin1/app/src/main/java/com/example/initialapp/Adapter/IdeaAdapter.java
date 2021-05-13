@@ -49,8 +49,8 @@ public class IdeaAdapter extends RecyclerView.Adapter<IdeaAdapter.ViewHolder> {
 
         ViewHolder(View ideaView) {
             super(ideaView);
-            //activity = ideaView.findViewById(R.id.tv_activity);
-            icon = ideaView.findViewById(R.id.iv_icon);
+            activity = ideaView.findViewById(R.id.idea_title);
+            icon = ideaView.findViewById(R.id.idea_icon);
             ideaView.setOnClickListener(this);
         }
 

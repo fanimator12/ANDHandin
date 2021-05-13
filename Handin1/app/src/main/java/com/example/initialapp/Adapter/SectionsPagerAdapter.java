@@ -1,0 +1,62 @@
+package com.example.initialapp.Adapter;
+
+import android.content.Context;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.initialapp.R;
+import com.example.initialapp.View.Fragments.AllGalleryFragment;
+import com.example.initialapp.View.Fragments.CompletedGalleryFragment;
+import com.example.initialapp.View.Fragments.WishlistGalleryFragment;
+
+public class SectionsPagerAdapter extends FragmentPagerAdapter {
+    @StringRes
+    private static final int[] TAB_TITLES = new int[]{R.string.all, R.string.wishlist, R.string.completed};
+    private final Context mContext;
+
+    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+        super(fm);
+        mContext = context;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+       Fragment fragment = null;
+       switch (position) {
+           case 0:
+               fragment = AllGalleryFragment.newInstance(0);
+               break;
+           case 1:
+               fragment = WishlistGalleryFragment.newInstance(1);
+               break;
+           case 2:
+               fragment = CompletedGalleryFragment.newInstance(2);
+       }
+       return fragment;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        switch (position) {
+            case 0:
+                return "All";
+            case 1:
+                return "Wishlist";
+            case 2:
+                return "Completed";
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public int getCount() {
+        // Show 3 total pages.
+        return 3;
+    }
+}

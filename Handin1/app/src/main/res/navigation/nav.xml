@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/allGalleryFragment">
+    app:startDestination="@id/loginFragment">
     <fragment
-        android:id="@+id/mainActivity"
-        android:name="com.example.initialapp.View.Activities.MainActivity"
-        android:label="LoginActivity"
-        tools:layout="@layout/activity_main"
+        android:id="@+id/loginFragment"
+        android:name="com.example.initialapp.View.Fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"
         >
         <action
-            android:id="@+id/action_mainActivity_to_allGalleryFragment"
+            android:id="@+id/action_loginFragment_to_allGalleryFragment"
             app:destination="@id/allGalleryFragment" />
     </fragment>
     <fragment
@@ -22,15 +22,48 @@
         <action
             android:id="@+id/action_allGalleryFragment_to_galleryFragment"
             app:destination="@id/galleryFragment" />
+        <action
+            android:id="@+id/action_allGalleryFragment_to_createFragment"
+            app:destination="@id/createFragment" />
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.initialapp.View.Fragments.WishlistGalleryFragment"
-        android:label="MonitorFragment"
+        android:label="WishlistFragment"
         tools:layout="@layout/fragment_wishlistgallery">
         <action
             android:id="@+id/action_galleryFragment_to_allGalleryFragment"
             app:destination="@id/allGalleryFragment" />
+        <action
+            android:id="@+id/action_galleryFragment_to_createFragment"
+            app:destination="@id/createFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createFragment"
+        android:name="com.example.initialapp.View.Fragments.CreateFragment"
+        android:label="CreateFragment"
+        tools:layout="@layout/fragment_create">
+        <action
+            android:id="@+id/action_createFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.example.initialapp.View.Fragments.DescriptionFragment"
+        android:label="DescriptionFragment"
+        tools:layout="@layout/fragment_description">
+        <action
+            android:id="@+id/action_descriptionFragment_to_allGalleryFragment"
+            app:destination="@id/allGalleryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completedGalleryFragment"
+        android:name="com.example.initialapp.View.Fragments.CompletedGalleryFragment"
+        android:label="CompletedFragment"
+        tools:layout="@layout/fragment_completedgallery">
+        <action
+            android:id="@+id/action_completedGalleryFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
     </fragment>
 
 </navigation>
