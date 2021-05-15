@@ -3,17 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/loginFragment">
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.initialapp.View.Fragments.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/fragment_login"
-        >
-        <action
-            android:id="@+id/action_loginFragment_to_allGalleryFragment"
-            app:destination="@id/allGalleryFragment" />
-    </fragment>
+    app:startDestination="@id/allGalleryFragment">
     <fragment
         android:id="@+id/allGalleryFragment"
         android:name="com.example.initialapp.View.Fragments.AllGalleryFragment"
@@ -23,9 +13,17 @@
             android:id="@+id/action_allGalleryFragment_to_galleryFragment"
             app:destination="@id/galleryFragment" />
         <action
+            android:id="@+id/action_allGalleryFragment_to_completedGalleryFragment"
+            app:destination="@id/completedGalleryFragment" />
+        <action
             android:id="@+id/action_allGalleryFragment_to_createFragment"
             app:destination="@id/createFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/nav_about_us"
+        android:name="com.example.initialapp.View.Fragments.AboutUsFragment"
+        android:label="AboutUs"
+        tools:layout="@layout/fragment_about_us"/>
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.initialapp.View.Fragments.WishlistGalleryFragment"
@@ -34,6 +32,9 @@
         <action
             android:id="@+id/action_galleryFragment_to_allGalleryFragment"
             app:destination="@id/allGalleryFragment" />
+        <action
+            android:id="@+id/action_galleryFragment_to_completedGalleryFragment"
+            app:destination="@id/completedGalleryFragment" />
         <action
             android:id="@+id/action_galleryFragment_to_createFragment"
             app:destination="@id/createFragment" />
@@ -64,6 +65,9 @@
         <action
             android:id="@+id/action_completedGalleryFragment_to_galleryFragment"
             app:destination="@id/galleryFragment" />
+        <action
+            android:id="@+id/action_completedGalleryFragment_to_allGalleryFragment"
+            app:destination="@id/allGalleryFragment" />
     </fragment>
 
 </navigation>

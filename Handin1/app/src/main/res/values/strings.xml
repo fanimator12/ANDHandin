@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">InitialApp</string>
+    <string name="app_name">My Bucket List</string>
     <string name="my_bucket_list">My Bucket List</string>
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
@@ -11,7 +11,15 @@
     <string name="add_to_wishlist">Add to Wishlist</string>
     <string name="remove_from_wishlist">Remove from Wishlist</string>
     <string name="create_new_activity">Create new bucket list activity</string>
-    <string name="addIdea">Add Idea</string>
-    <string name="idea">Idea</string>
-    <string name="ideaIcon">Idea Icon</string>
+    <string name="addGoal">Add Goal</string>
+    <string name="goal">Goal</string>
+    <string name="goalIcon">Goal Icon</string>
+    <string name="sign_in_register">SIGN IN / REGISTER</string>
+    <string name="nav_header_desc">Navigation Header</string>
+    <string name="all_goals">All Goals</string>
+    <string name="completed_list">Completed List</string>
+    <string name="about_us">About us</string>
+    <string name="about_us_description">This app is using an open-source API to follow bucket list goals. The external resource used is presented below:</string>
+    <string name="android_studio">Android Studio</string>
+    <string name="android_studio_android_com">android.studio@android.com</string>
 </resources>

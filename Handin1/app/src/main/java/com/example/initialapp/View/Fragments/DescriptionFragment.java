@@ -44,14 +44,14 @@ public class DescriptionFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initializeFragmentsValues();
-
         Log.d(TAG, "onCreate was called");
     }
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         descriptionView = inflater.inflate(R.layout.fragment_description, container, false);
+
+        initializeFragmentsValues();
 
         return descriptionView;
     }
@@ -60,7 +60,7 @@ public class DescriptionFragment extends Fragment {
         descriptionViewModel = new ViewModelProvider(this).get(DescriptionViewModel.class);
 
         addToWishListButton = descriptionView.findViewById(R.id.addButton);
-        title = descriptionView.findViewById(R.id.idea_title);
+        title = descriptionView.findViewById(R.id.goal_title);
         image = descriptionView.findViewById(R.id.imageView);
         location = descriptionView.findViewById(R.id.location);
         checkbox = descriptionView.findViewById(R.id.checkBox);

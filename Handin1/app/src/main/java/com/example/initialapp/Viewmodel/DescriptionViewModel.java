@@ -5,7 +5,7 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.initialapp.Repository.IBucketListRepository;
+import com.example.initialapp.Database.Repository.IBucketListRepository;
 
 public class DescriptionViewModel extends AndroidViewModel {
     private IBucketListRepository bucketListRepository;
@@ -15,6 +15,6 @@ public class DescriptionViewModel extends AndroidViewModel {
     }
 
     public void fetchData(){
-        bucketListRepository.getIdea();
+        bucketListRepository.getGoal();
     }
 }

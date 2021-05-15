@@ -17,9 +17,9 @@ import com.google.android.material.tabs.TabItem;
 
 public class WishlistGalleryFragment extends Fragment {
 
-    private TabItem allTabItem;
-    private TabItem wishlistTabItem;
-    private TabItem completedTabItem;
+//    private TabItem allTabItem;
+//    private TabItem wishlistTabItem;
+//    private TabItem completedTabItem;
     private View galleryView;
 
     private static final String TAG = "GalleryFragment";
@@ -46,9 +46,14 @@ public class WishlistGalleryFragment extends Fragment {
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         galleryView = inflater.inflate(R.layout.fragment_wishlistgallery, container, false);
-        allTabItem.setOnClickListener(view -> {
-            Navigation.findNavController(galleryView).navigate(R.id.action_galleryFragment_to_allGalleryFragment); // TODO update navigation
-        });
+
+//        allTabItem.setOnClickListener(view -> {
+//            Navigation.findNavController(galleryView).navigate(R.id.action_galleryFragment_to_allGalleryFragment); // TODO update navigation
+//        });
+
+//        completedTabItem.setOnClickListener(view -> {
+//            Navigation.findNavController(galleryView).navigate(R.id.action_galleryFragment_to_completedGalleryFragment); // TODO update navigation
+//        });
 
         return galleryView;
     }

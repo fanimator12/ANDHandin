@@ -3,56 +3,68 @@ package com.example.initialapp.Viewmodel;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.arch.core.util.Function;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Transformations;
 
-import com.example.initialapp.Repository.BucketListRepository;
-import com.example.initialapp.Repository.IBucketListRepository;
+import com.example.initialapp.Database.BucketListGoals;
+import com.example.initialapp.Database.Repository.BucketListRepository;
+import com.example.initialapp.Database.Repository.IBucketListRepository;
+import com.example.initialapp.RemoteSource.RequestManager;
+
+import java.util.List;
 
 public class AllGalleryViewModel extends AndroidViewModel {
 
     private IBucketListRepository bucketListRepository;
-    private MutableLiveData<String> ideaTitle;
-    private MutableLiveData<Integer> ideaIconID;
-
-    private MutableLiveData<Integer> mIndex = new MutableLiveData<>();
-    private LiveData<String> mText = Transformations.map(mIndex, new Function<Integer, String>() {
-        @Override
-        public String apply(Integer input) {
-            return "Bucket List item: " + input;
-        }
-    });
-
-    public void setIndex(int index) {
-        mIndex.setValue(index);
-    }
-
-    public LiveData<String> getText() {
-        return mText;
-    }
+    private MutableLiveData<String> goalLabel;
+    private MutableLiveData<Integer> goalIconID;
+    RequestManager requestManager = RequestManager.getInstance();
 
     public AllGalleryViewModel(@NonNull Application application) {
         super(application);
 
-        // Bucket List idea values
-        ideaTitle = new MutableLiveData<>();
-        ideaIconID = new MutableLiveData<>();
+        // Bucket List goal values
+        goalLabel = new MutableLiveData<>();
+        goalIconID = new MutableLiveData<>();
 
         bucketListRepository = new BucketListRepository(application);
     }
 
-    public MutableLiveData<String> getIdeaTitle() {
-        return ideaTitle;
+    public void getGoal() {
+        bucketListRepository.getGoal();
     }
 
-    public MutableLiveData<Integer> getIdeaIconID() {
-        return ideaIconID;
+    public void searchForGoal(String s) {
+        bucketListRepository.searchForGoal(s);
+    }
+
+    public MutableLiveData<String> getGoalLabel() {
+        return goalLabel;
+    }
+
+    public MutableLiveData<Integer> getGoalIconID() {
+        return goalIconID;
     }
 
     public void fetchData(){
-        bucketListRepository.getIdea();
+        bucketListRepository.getAllGoals();
     }
+
+    public LiveData<List<BucketListGoals>> getAllGoals() {
+        return bucketListRepository.getAllGoals();
+    }
+
+    public void insert(BucketListGoals bucketListGoals){
+        bucketListRepository.insert(bucketListGoals);
+    }
+
+    public void delete(BucketListGoals bucketListGoals){
+        bucketListRepository.delete(bucketListGoals);
+    }
+
+    public void deleteAllGoals() {
+        bucketListRepository.deleteAllGoals();
+    }
+
 }
