@@ -16,10 +16,12 @@ import java.util.List;
 
 public class AllGalleryViewModel extends AndroidViewModel {
 
-    private IBucketListRepository bucketListRepository;
+    IBucketListRepository bucketListRepository;
     private MutableLiveData<String> goalLabel;
     private MutableLiveData<Integer> goalIconID;
-    RequestManager requestManager = RequestManager.getInstance();
+
+    // TODO the whole app crashes just beacuse of requestmanager, solve ASAP
+//    RequestManager requestManager = RequestManager.getInstance();
 
     public AllGalleryViewModel(@NonNull Application application) {
         super(application);
@@ -28,7 +30,9 @@ public class AllGalleryViewModel extends AndroidViewModel {
         goalLabel = new MutableLiveData<>();
         goalIconID = new MutableLiveData<>();
 
-        bucketListRepository = new BucketListRepository(application);
+        bucketListRepository = BucketListRepository.getInstance(application);
+
+//        requestManager.getGoalsLive();
     }
 
     public void getGoal() {

@@ -10,17 +10,17 @@
         android:title="@string/my_bucket_list" />
 
     <item
-        android:id="@+id/nav_all_ideas"
+        android:id="@+id/allGalleryFragment"
         android:icon="@android:drawable/ic_menu_view"
         android:title="@string/all_goals" />
 
     <item
-        android:id="@+id/nav_wishlist"
+        android:id="@+id/galleryFragment"
         android:icon="@android:drawable/ic_dialog_map"
         android:title="@string/wishlist" />
 
     <item
-        android:id="@+id/nav_completed_list"
+        android:id="@+id/completedGalleryFragment"
         android:icon="@android:drawable/checkbox_on_background"
         android:title="@string/completed_list" />
 

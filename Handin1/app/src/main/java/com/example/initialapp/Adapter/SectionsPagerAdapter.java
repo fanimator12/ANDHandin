@@ -20,13 +20,13 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
        Fragment fragment = null;
        switch (position) {
            case 0:
-               fragment = AllGalleryFragment.newInstance(0);
+               fragment = new AllGalleryFragment();
                break;
            case 1:
-               fragment = WishlistGalleryFragment.newInstance(1);
+               fragment = new WishlistGalleryFragment();
                break;
            case 2:
-               fragment = CompletedGalleryFragment.newInstance(2);
+               fragment = new CompletedGalleryFragment();
        }
        return fragment;
     }

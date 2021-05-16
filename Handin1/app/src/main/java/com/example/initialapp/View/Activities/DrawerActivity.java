@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class DrawerActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    private View drawerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,20 +37,15 @@ public class DrawerActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(this::onClick);
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         // Passing each menu ID as a set of ID-s because each menu should be considered as top level destinations
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_all_ideas, R.id.nav_wishlist,
-                R.id.nav_completed_list, R.id.nav_about_us)
+                R.id.allGalleryFragment, R.id.galleryFragment,
+                R.id.completedGalleryFragment, R.id.nav_about_us)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -108,5 +103,11 @@ public class DrawerActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void onClick(View view) {
+        Snackbar.make(view, "Creating new Bucket List", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+        // TODO navigating to createFragment
     }
 }

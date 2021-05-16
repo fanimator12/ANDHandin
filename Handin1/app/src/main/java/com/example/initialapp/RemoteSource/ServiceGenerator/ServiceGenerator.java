@@ -13,22 +13,21 @@ public class ServiceGenerator {
 
     private static Retrofit.Builder retrofitBuilder;
 
-    public static Retrofit.Builder getInstance(){
-        if(retrofitBuilder == null)
-        {
-            retrofitBuilder = new Retrofit.Builder()
-                    .baseUrl("http://bucketlist.org/api/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(okHttpClient);
-        }
-        return retrofitBuilder;
-    }
-
     private static HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
 
     private static OkHttpClient okHttpClient = new OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build();
+
+    public static Retrofit.Builder getInstance() {
+        if (retrofitBuilder == null) {
+            retrofitBuilder = new Retrofit.Builder()
+                    .baseUrl("https://ladybbucketlist.docs.apiary.io/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(okHttpClient);
+        }
+        return retrofitBuilder;
+    }
 
     private static Retrofit retrofit = retrofitBuilder.build();
 
@@ -38,10 +37,14 @@ public class ServiceGenerator {
         return bucketListAPI;
     }
 
-    public static String getAuthHeader(String user,String password){
+    public static String getAuthHeader(String user, String password) {
         String base = user + ":" + password;
-        String auth = "Basic " + Base64.encodeToString(base.getBytes(),Base64.NO_WRAP);
-        return  auth;
+        String auth = "Basic " + Base64.encodeToString(base.getBytes(), Base64.NO_WRAP);
+        return auth;
     }
 
+    public static Integer getBucketListHeader(int bucketlistID) {
+        String base = "Bucketlist item:" + bucketlistID;
+        return bucketlistID;
+    }
 }

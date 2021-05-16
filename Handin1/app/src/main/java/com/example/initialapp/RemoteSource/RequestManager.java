@@ -18,18 +18,15 @@ import retrofit2.Response;
 public class RequestManager {
 
     private static RequestManager instance;
-    private MutableLiveData<String> output;
     private MutableLiveData<GoalResponse> goalsResponse;
     private MutableLiveData<List<String>> goalsLive;
     private List<String> goals;
     BucketListAPI bucketListAPI;
     String user;
-    private int resultStart = 0;
-    public static final int RESULT_LIMIT = 100;
+    Integer bucketlistID;
 
     private RequestManager() {
 
-        output = new MutableLiveData<>();
         goalsResponse = new MutableLiveData<>();
         goalsLive = new MutableLiveData<>();
         goals = new ArrayList<String>();
@@ -37,6 +34,8 @@ public class RequestManager {
 
         //It is using a specific account, but in the future each user should have its own
         user = ServiceGenerator.getAuthHeader("fanimator", "hungary");
+
+        bucketlistID = ServiceGenerator.getBucketListHeader(1);
     }
 
     public static synchronized RequestManager getInstance() {
@@ -48,12 +47,14 @@ public class RequestManager {
 
     public MutableLiveData<List<String>> getGoal() {
 
-        Call<GoalResponse> call = bucketListAPI.getGoal(user);
+        Call<GoalResponse> call = bucketListAPI.getBucketlist(user, bucketlistID);
         call.enqueue(new Callback<GoalResponse>() {
             @Override
             public void onResponse(Call<GoalResponse> call, Response<GoalResponse> response) {
-                goalsResponse.setValue(response.body());
-                goalsLive.setValue(goalsResponse.getValue().getGoalsLabels());
+                if (response.code() == 200) {
+                    goalsResponse.setValue(response.body());
+                    goalsLive.setValue(goalsResponse.getValue().getGoalsLabels());
+                }
             }
 
             @Override
@@ -63,6 +64,27 @@ public class RequestManager {
         });
         return goalsLive;
     }
+
+    public MutableLiveData<List<String>> getAllGoals() {
+
+        Call<GoalResponse> call = bucketListAPI.listAll(user, bucketlistID);
+        call.enqueue(new Callback<GoalResponse>() {
+            @Override
+            public void onResponse(Call<GoalResponse> call, Response<GoalResponse> response) {
+                if (response.code() == 200) {
+                    goalsResponse.setValue(response.body());
+                    goalsLive.setValue(goalsResponse.getValue().getGoalsLabels());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GoalResponse> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong listing all goals");
+            }
+        });
+        return goalsLive;
+    }
+
 
     public MutableLiveData<List<String>> getGoalsLive() {
         return goalsLive;

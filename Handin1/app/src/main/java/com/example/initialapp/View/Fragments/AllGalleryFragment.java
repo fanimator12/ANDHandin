@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,7 +29,7 @@ import com.google.android.material.tabs.TabItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllGalleryFragment extends Fragment implements GoalAdapter.OnListGoalClickListener {
+public class AllGalleryFragment extends Fragment {
 
     private View allGalleryView;
     RecyclerView mGoalList;
@@ -40,15 +41,15 @@ public class AllGalleryFragment extends Fragment implements GoalAdapter.OnListGo
 
     private static final String TAG = "AllGalleryFragment";
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
-    public static AllGalleryFragment newInstance(int index) {
-        AllGalleryFragment fragment = new AllGalleryFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(ARG_SECTION_NUMBER, index);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
+//    private static final String ARG_SECTION_NUMBER = "section_number";
+//
+//    public static AllGalleryFragment newInstance(int index) {
+//        AllGalleryFragment fragment = new AllGalleryFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putInt(ARG_SECTION_NUMBER, index);
+//        fragment.setArguments(bundle);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,13 +61,14 @@ public class AllGalleryFragment extends Fragment implements GoalAdapter.OnListGo
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        allGalleryViewModel = new ViewModelProvider(this).get(AllGalleryViewModel.class);
+
+//        allGalleryViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(AllGalleryViewModel.class);
         allGalleryView = inflater.inflate(R.layout.fragment_allgallery, container, false);
         initializeFragmentsValues();
 //        allTabItem.setOnClickListener(view -> {
 //            Navigation.findNavController(allGalleryView).navigate(R.id.action_allGalleryFragment_to_galleryFragment); // TODO update navigation
 //        });
-
-        allGalleryViewModel = new ViewModelProvider(this).get(AllGalleryViewModel.class);
 
         // get all goals
         allGalleryViewModel.getAllGoals().observe(getViewLifecycleOwner(), new Observer<List<BucketListGoals>>() {
@@ -100,13 +102,7 @@ public class AllGalleryFragment extends Fragment implements GoalAdapter.OnListGo
         mGoalList = allGalleryView.findViewById(R.id.bucketListRecyclerView);
         mGoalList.setLayoutManager(new LinearLayoutManager(allGalleryView.getContext()));
         mGoalList.setHasFixedSize(true);
-        mGoalAdapter = new GoalAdapter(goals, this);
+        mGoalAdapter = new GoalAdapter();
         mGoalList.setAdapter(mGoalAdapter);
-    }
-
-    @Override
-    public void onListGoalClick(int clickedGoalIndex) {
-        int goalNumber = clickedGoalIndex + 1;
-        //Toast.makeText(this, "Goal Number: " + goalNumber, Toast.LENGTH_SHORT).show();
     }
 }

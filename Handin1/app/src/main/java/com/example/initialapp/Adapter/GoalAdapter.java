@@ -20,12 +20,6 @@ import java.util.List;
 public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     private List<BucketListGoals> mGoals = new ArrayList<>();
     private Context context;
-    final private OnListGoalClickListener mOnListGoalClickListener;
-
-    public GoalAdapter(ArrayList<BucketListGoals> mGoals, OnListGoalClickListener mOnListGoalClickListener) {
-        this.mGoals = mGoals;
-        this.mOnListGoalClickListener = mOnListGoalClickListener;
-    }
 
     @NonNull
     @Override
@@ -59,7 +53,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
         return mGoals.get(position);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView label;
         ImageView icon;
@@ -68,13 +62,8 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
             super(goalView);
             label = goalView.findViewById(R.id.goal_title);
             icon = goalView.findViewById(R.id.goal_icon);
-            goalView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-            mOnListGoalClickListener.onListGoalClick(getAdapterPosition());
-        }
     }
 
     public interface OnListGoalClickListener {
