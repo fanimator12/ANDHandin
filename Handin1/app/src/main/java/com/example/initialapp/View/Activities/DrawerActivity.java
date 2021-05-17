@@ -44,7 +44,7 @@ public class DrawerActivity extends AppCompatActivity {
 
         // Passing each menu ID as a set of ID-s because each menu should be considered as top level destinations
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.allGalleryFragment, R.id.galleryFragment,
+                R.id.fragment_frontpage, R.id.allGalleryFragment, R.id.galleryFragment,
                 R.id.completedGalleryFragment, R.id.nav_about_us)
                 .setDrawerLayout(drawer)
                 .build();
@@ -109,5 +109,6 @@ public class DrawerActivity extends AppCompatActivity {
         Snackbar.make(view, "Creating new Bucket List", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
         // TODO navigating to createFragment
+//        Navigation.findNavController(this, R.id.createFragment);
     }
 }

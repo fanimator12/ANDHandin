@@ -5,9 +5,9 @@
     tools:showIn="navigation_view">
 
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/fragment_frontpage"
         android:icon="@drawable/logo"
-        android:title="@string/my_bucket_list" />
+        android:title="@string/front_page" />
 
     <item
         android:id="@+id/allGalleryFragment"

@@ -22,4 +22,6 @@ public interface IBucketListRepository {
     void delete(BucketListGoals bucketListGoals);
 
     void deleteAllGoals();
+
+    LiveData<Float> getCompletedGoals();
 }

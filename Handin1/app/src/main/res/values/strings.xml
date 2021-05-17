@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">My Bucket List</string>
-    <string name="my_bucket_list">My Bucket List</string>
+    <string name="front_page">Front Page</string>
     <string name="e_mail">E-mail</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
@@ -22,4 +22,7 @@
     <string name="about_us_description">This app is using an open-source API to follow bucket list goals. The external resource used is presented below:</string>
     <string name="android_studio">Android Studio</string>
     <string name="android_studio_android_com">android.studio@android.com</string>
+    <string name="welcome">Welcome!</string>
+    <string name="current_progress_in_your_bucketlist">Current progress in your bucketlist:</string>
+    <string name="logo">logo</string>
 </resources>

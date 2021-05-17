@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "InitialApp"
+rootProject.name = "MyBucketListApp"

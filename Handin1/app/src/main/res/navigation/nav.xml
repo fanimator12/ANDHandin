@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/allGalleryFragment">
+    app:startDestination="@id/fragment_frontpage">
+    <fragment
+        android:id="@+id/fragment_frontpage"
+        android:name="com.example.initialapp.View.Fragments.FrontPageFragment"
+        android:label="Front Page"
+        tools:layout="@layout/fragment_frontpage">
+    </fragment>
     <fragment
         android:id="@+id/allGalleryFragment"
         android:name="com.example.initialapp.View.Fragments.AllGalleryFragment"
-        android:label="AllGalleryFragment"
+        android:label="All Goals"
         tools:layout="@layout/fragment_allgallery">
         <action
             android:id="@+id/action_allGalleryFragment_to_galleryFragment"
@@ -22,12 +28,12 @@
     <fragment
         android:id="@+id/nav_about_us"
         android:name="com.example.initialapp.View.Fragments.AboutUsFragment"
-        android:label="AboutUs"
+        android:label="About Us"
         tools:layout="@layout/fragment_about_us"/>
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.initialapp.View.Fragments.WishlistGalleryFragment"
-        android:label="WishlistFragment"
+        android:label="Wishlist"
         tools:layout="@layout/fragment_wishlistgallery">
         <action
             android:id="@+id/action_galleryFragment_to_allGalleryFragment"
@@ -42,7 +48,7 @@
     <fragment
         android:id="@+id/createFragment"
         android:name="com.example.initialapp.View.Fragments.CreateFragment"
-        android:label="CreateFragment"
+        android:label="Create new Bucketlist"
         tools:layout="@layout/fragment_create">
         <action
             android:id="@+id/action_createFragment_to_galleryFragment"
@@ -51,7 +57,7 @@
     <fragment
         android:id="@+id/descriptionFragment"
         android:name="com.example.initialapp.View.Fragments.DescriptionFragment"
-        android:label="DescriptionFragment"
+        android:label="Description"
         tools:layout="@layout/fragment_description">
         <action
             android:id="@+id/action_descriptionFragment_to_allGalleryFragment"
@@ -60,7 +66,7 @@
     <fragment
         android:id="@+id/completedGalleryFragment"
         android:name="com.example.initialapp.View.Fragments.CompletedGalleryFragment"
-        android:label="CompletedFragment"
+        android:label="Completed List"
         tools:layout="@layout/fragment_completedgallery">
         <action
             android:id="@+id/action_completedGalleryFragment_to_galleryFragment"

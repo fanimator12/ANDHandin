@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/InitialApp.iml" filepath="$PROJECT_DIR$/.idea/modules/InitialApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/InitialApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/InitialApp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MyBucketListApp.iml" filepath="$PROJECT_DIR$/.idea/modules/MyBucketListApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MyBucketListApp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MyBucketListApp.app.iml" />
     </modules>
   </component>
 </project>

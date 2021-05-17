@@ -91,6 +91,15 @@ public class BucketListRepository implements IBucketListRepository {
         new DeleteAllGoalsAsync(bucketListDAO).execute();
     }
 
+    @Override
+    public LiveData<Float> getCompletedGoals() {
+        total = bucketListDAO.getTotalGoals( FirebaseAuth.getInstance().getCurrentUser().getEmail());
+//        if (total.isCompleted() == true){
+//            return total;
+//        }
+        return total;
+    }
+
     class InsertBucketListGoalAsync extends AsyncTask<BucketListGoals,Void,Void> {
         private BucketListDAO bucketListDAO;
 
