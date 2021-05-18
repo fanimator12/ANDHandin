@@ -1,5 +1,6 @@
 package com.example.initialapp.UI.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,8 +45,8 @@ public class FrontPageFragment extends Fragment {
             }
         });
         progressBar = frontPageView.findViewById(R.id.progressBar);
-//        setUpObserver();
-//        updateProgressBar();
+        setUpObserver();
+        updateProgressBar();
         Log.d(TAG, "onCreate was called");
 
         return frontPageView;
@@ -53,28 +54,28 @@ public class FrontPageFragment extends Fragment {
 
 
     // TODO does not work yet
-//    @SuppressLint("DefaultLocale")
-//    private void updateProgressBar(){
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                while (true) {
-//                    frontPageViewModel.fetchData();
-//                    try {
-//                        Thread.sleep(100);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            };
-//        });
-//        thread.start();
-//    }
-//
-//    private void setUpObserver(){
-//        frontPageViewModel.getCompletedGoals().observe(this, overallProgress -> {
-//            int progressDigit = (int)Double.parseDouble(overallProgress);
-//            progressBar.setProgress(progressDigit);
-//        });
-//    }
+    @SuppressLint("DefaultLocale")
+    private void updateProgressBar(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    frontPageViewModel.fetchData();
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+        });
+        thread.start();
+    }
+
+    private void setUpObserver(){
+        frontPageViewModel.getCompletedGoals().observe(this, overallProgress -> {
+            int progressDigit = (int)Double.parseDouble(overallProgress);
+            progressBar.setProgress(progressDigit);
+        });
+    }
 }
