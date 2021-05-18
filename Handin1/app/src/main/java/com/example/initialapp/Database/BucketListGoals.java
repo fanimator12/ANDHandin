@@ -26,7 +26,7 @@ public class BucketListGoals {
     private Boolean isCompleted;
 
 
-    public BucketListGoals(String user, String goal, String type, String location, Integer imageID, String description, Boolean isCompleted) {
+    public BucketListGoals(String user, String goal, String type, String location, Integer imageID, String description) {
         this.user = user;
         this.goal = goal;
         this.type = type;

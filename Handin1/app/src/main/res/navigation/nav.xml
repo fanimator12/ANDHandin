@@ -6,13 +6,13 @@
     app:startDestination="@id/fragment_frontpage">
     <fragment
         android:id="@+id/fragment_frontpage"
-        android:name="com.example.initialapp.View.Fragments.FrontPageFragment"
+        android:name="com.example.initialapp.UI.Fragments.FrontPageFragment"
         android:label="Front Page"
         tools:layout="@layout/fragment_frontpage">
     </fragment>
     <fragment
         android:id="@+id/allGalleryFragment"
-        android:name="com.example.initialapp.View.Fragments.AllGalleryFragment"
+        android:name="com.example.initialapp.UI.Fragments.AllGalleryFragment"
         android:label="All Goals"
         tools:layout="@layout/fragment_allgallery">
         <action
@@ -27,12 +27,12 @@
     </fragment>
     <fragment
         android:id="@+id/nav_about_us"
-        android:name="com.example.initialapp.View.Fragments.AboutUsFragment"
+        android:name="com.example.initialapp.UI.Fragments.AboutUsFragment"
         android:label="About Us"
         tools:layout="@layout/fragment_about_us"/>
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.example.initialapp.View.Fragments.WishlistGalleryFragment"
+        android:name="com.example.initialapp.UI.Fragments.WishlistGalleryFragment"
         android:label="Wishlist"
         tools:layout="@layout/fragment_wishlistgallery">
         <action
@@ -47,7 +47,7 @@
     </fragment>
     <fragment
         android:id="@+id/createFragment"
-        android:name="com.example.initialapp.View.Fragments.CreateFragment"
+        android:name="com.example.initialapp.UI.Fragments.CreateFragment"
         android:label="Create new Bucketlist"
         tools:layout="@layout/fragment_create">
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/descriptionFragment"
-        android:name="com.example.initialapp.View.Fragments.DescriptionFragment"
+        android:name="com.example.initialapp.UI.Fragments.DescriptionFragment"
         android:label="Description"
         tools:layout="@layout/fragment_description">
         <action
@@ -65,7 +65,7 @@
     </fragment>
     <fragment
         android:id="@+id/completedGalleryFragment"
-        android:name="com.example.initialapp.View.Fragments.CompletedGalleryFragment"
+        android:name="com.example.initialapp.UI.Fragments.CompletedGalleryFragment"
         android:label="Completed List"
         tools:layout="@layout/fragment_completedgallery">
         <action

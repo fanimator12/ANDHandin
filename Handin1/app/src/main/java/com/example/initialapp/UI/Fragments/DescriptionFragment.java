@@ -1,4 +1,4 @@
-package com.example.initialapp.View.Fragments;
+package com.example.initialapp.UI.Fragments;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.initialapp.R;
-import com.example.initialapp.Viewmodel.DescriptionViewModel;
+import com.example.initialapp.UI.Viewmodel.DescriptionViewModel;
 
 public class DescriptionFragment extends Fragment {
     private View descriptionView;

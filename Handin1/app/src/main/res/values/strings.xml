@@ -25,4 +25,5 @@
     <string name="welcome">Welcome!</string>
     <string name="current_progress_in_your_bucketlist">Current progress in your bucketlist:</string>
     <string name="logo">logo</string>
+    <string name="no_goals_yet_please_add">No goals yet, please add</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.initialapp.Viewmodel;
+package com.example.initialapp.UI.Viewmodel;
 
 import android.app.Application;
 
@@ -10,20 +10,16 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.initialapp.Database.BucketListGoals;
 import com.example.initialapp.Database.Repository.BucketListRepository;
 import com.example.initialapp.Database.Repository.IBucketListRepository;
-import com.example.initialapp.RemoteSource.RequestManager;
 
 import java.util.List;
 
-public class AllGalleryViewModel extends AndroidViewModel {
+public class WishlistGalleryViewModel extends AndroidViewModel {
 
-    IBucketListRepository bucketListRepository;
+    private IBucketListRepository bucketListRepository;
     private MutableLiveData<String> goalLabel;
     private MutableLiveData<Integer> goalIconID;
 
-    // TODO the whole app crashes just beacuse of requestmanager, solve ASAP
-//    RequestManager requestManager = RequestManager.getInstance();
-
-    public AllGalleryViewModel(@NonNull Application application) {
+    public WishlistGalleryViewModel(@NonNull Application application) {
         super(application);
 
         // Bucket List goal values
@@ -32,7 +28,6 @@ public class AllGalleryViewModel extends AndroidViewModel {
 
         bucketListRepository = BucketListRepository.getInstance(application);
 
-//        requestManager.getGoalsLive();
     }
 
     public void getGoal() {
@@ -70,5 +65,4 @@ public class AllGalleryViewModel extends AndroidViewModel {
     public void deleteAllGoals() {
         bucketListRepository.deleteAllGoals();
     }
-
 }

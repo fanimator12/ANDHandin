@@ -1,11 +1,11 @@
-package com.example.initialapp.View.Fragments;
+package com.example.initialapp.UI.Fragments;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,17 +14,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.initialapp.Adapter.GoalAdapter;
 import com.example.initialapp.Database.BucketListGoals;
-import com.example.initialapp.Domain.Goal;
 import com.example.initialapp.R;
-import com.example.initialapp.Viewmodel.AllGalleryViewModel;
-import com.google.android.material.tabs.TabItem;
+import com.example.initialapp.UI.Viewmodel.AllGalleryViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +31,7 @@ public class AllGalleryFragment extends Fragment {
     private View allGalleryView;
     RecyclerView mGoalList;
     GoalAdapter mGoalAdapter;
+    private TextView error;
 
     private MutableLiveData<List<String>> list = new MutableLiveData<>();
 
@@ -63,20 +61,26 @@ public class AllGalleryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         allGalleryViewModel = new ViewModelProvider(this).get(AllGalleryViewModel.class);
 
-//        allGalleryViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(AllGalleryViewModel.class);
         allGalleryView = inflater.inflate(R.layout.fragment_allgallery, container, false);
+
         initializeFragmentsValues();
-//        allTabItem.setOnClickListener(view -> {
-//            Navigation.findNavController(allGalleryView).navigate(R.id.action_allGalleryFragment_to_galleryFragment); // TODO update navigation
-//        });
+
+        updateRecyclerView();
 
         // get all goals
-        allGalleryViewModel.getAllGoals().observe(getViewLifecycleOwner(), new Observer<List<BucketListGoals>>() {
-            @Override
-            public void onChanged(List<BucketListGoals> bucketListGoals) {
-                mGoalAdapter.setGoals(bucketListGoals);
+        try {
+            if (allGalleryViewModel.getAllGoals() != null) {
+                allGalleryViewModel.getAllGoals().observe(getViewLifecycleOwner(), new Observer<List<BucketListGoals>>() {
+                    @Override
+                    public void onChanged(List<BucketListGoals> bucketListGoals) {
+                        mGoalAdapter.setGoals(bucketListGoals);
+                    }
+                });
             }
-        });
+        } catch (Exception e) {
+            error.setVisibility(View.VISIBLE);
+            e.printStackTrace();
+        }
 
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -95,8 +99,27 @@ public class AllGalleryFragment extends Fragment {
         return allGalleryView;
     }
 
+    private void updateRecyclerView() {
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    allGalleryViewModel.fetchData();
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
+    }
+
     private void initializeFragmentsValues() {
         ArrayList<BucketListGoals> goals = new ArrayList<>();
+
+        error = allGalleryView.findViewById(R.id.error);
 
         //RecyclerView Setup
         mGoalList = allGalleryView.findViewById(R.id.bucketListRecyclerView);

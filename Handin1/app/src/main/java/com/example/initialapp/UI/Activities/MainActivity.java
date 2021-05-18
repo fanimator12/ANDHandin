@@ -1,4 +1,4 @@
-package com.example.initialapp.View.Activities;
+package com.example.initialapp.UI.Activities;
 
 import android.os.Bundle;
 

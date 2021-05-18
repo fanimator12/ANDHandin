@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.initialapp.View.Fragments.AllGalleryFragment;
-import com.example.initialapp.View.Fragments.CompletedGalleryFragment;
-import com.example.initialapp.View.Fragments.WishlistGalleryFragment;
+import com.example.initialapp.UI.Fragments.AllGalleryFragment;
+import com.example.initialapp.UI.Fragments.CompletedGalleryFragment;
+import com.example.initialapp.UI.Fragments.WishlistGalleryFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 

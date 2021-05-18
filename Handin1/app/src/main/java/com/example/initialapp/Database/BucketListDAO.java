@@ -36,5 +36,8 @@ public interface BucketListDAO {
 
     @Query("SELECT * FROM bucketlist_goals WHERE type LIKE :type AND user LIKE :user ORDER BY id DESC")
     LiveData<List<BucketListGoals>> getAllGoalsByType(String type, String user);
+
+//    @Query("SELECT * FROM bucketlist_goals WHERE completed IS 'true'")
+//    LiveData<Float> getCompletedGoals();
 }
 

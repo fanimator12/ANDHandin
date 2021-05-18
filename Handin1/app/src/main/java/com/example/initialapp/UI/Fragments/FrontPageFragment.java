@@ -1,6 +1,5 @@
-package com.example.initialapp.View.Fragments;
+package com.example.initialapp.UI.Fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.initialapp.R;
-import com.example.initialapp.Viewmodel.FrontPageViewModel;
+import com.example.initialapp.UI.Viewmodel.FrontPageViewModel;
 
 import java.io.InputStream;
 
@@ -38,6 +37,12 @@ public class FrontPageFragment extends Fragment {
         LottieAnimationView travelanimation = frontPageView.findViewById(R.id.lottieTravel);
         travelanimation.playAnimation();
 
+        travelanimation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                travelanimation.playAnimation();
+            }
+        });
         progressBar = frontPageView.findViewById(R.id.progressBar);
 //        setUpObserver();
 //        updateProgressBar();
@@ -46,8 +51,8 @@ public class FrontPageFragment extends Fragment {
         return frontPageView;
     }
 
+
     // TODO does not work yet
-//
 //    @SuppressLint("DefaultLocale")
 //    private void updateProgressBar(){
 //        Thread thread = new Thread(new Runnable() {
@@ -56,7 +61,7 @@ public class FrontPageFragment extends Fragment {
 //                while (true) {
 //                    frontPageViewModel.fetchData();
 //                    try {
-//                        Thread.sleep(5000);
+//                        Thread.sleep(100);
 //                    } catch (InterruptedException e) {
 //                        e.printStackTrace();
 //                    }
@@ -68,7 +73,7 @@ public class FrontPageFragment extends Fragment {
 //
 //    private void setUpObserver(){
 //        frontPageViewModel.getCompletedGoals().observe(this, overallProgress -> {
-//            int progressDigit =  (int)Double.parseDouble(overallProgress);
+//            int progressDigit = (int)Double.parseDouble(overallProgress);
 //            progressBar.setProgress(progressDigit);
 //        });
 //    }

@@ -1,4 +1,4 @@
-package com.example.initialapp.View.Fragments;
+package com.example.initialapp.UI.Fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,10 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.initialapp.R;
-import com.example.initialapp.Viewmodel.AboutUsViewModel;
+import com.example.initialapp.UI.Viewmodel.AboutUsViewModel;
 
 public class AboutUsFragment extends Fragment {
     private AboutUsViewModel aboutUsViewModel;

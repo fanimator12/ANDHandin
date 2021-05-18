@@ -1,4 +1,4 @@
-package com.example.initialapp.View.Fragments;
+package com.example.initialapp.UI.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.initialapp.R;
-import com.example.initialapp.Viewmodel.CreateViewModel;
+import com.example.initialapp.UI.Viewmodel.CreateViewModel;
 
 public class CreateFragment extends Fragment {
     private View createView;
@@ -40,13 +39,13 @@ public class CreateFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    public static CreateFragment newInstance(int index) {
-        CreateFragment fragment = new CreateFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(ARG_SECTION_NUMBER, index);
-        fragment.setArguments(bundle);
-        return fragment;
-    }
+//    public static CreateFragment newInstance(int index) {
+//        CreateFragment fragment = new CreateFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putInt(ARG_SECTION_NUMBER, index);
+//        fragment.setArguments(bundle);
+//        return fragment;
+//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,11 +61,10 @@ public class CreateFragment extends Fragment {
         initializeFragmentsValues();
 
         setUpObserver();
-        updateRecyclerView();
 
-        addToWishListButton.setOnClickListener(view -> {
-            Navigation.findNavController(createView).navigate(R.id.action_createFragment_to_galleryFragment); // TODO add validation
-        });
+//        addToWishListButton.setOnClickListener(view -> {
+//            Navigation.findNavController(createView).navigate(R.id.action_createFragment_to_galleryFragment); // TODO add validation
+//        });
 
         return createView;
     }
@@ -92,32 +90,15 @@ public class CreateFragment extends Fragment {
         methodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 
         setUpObserver();
-        updateRecyclerView();
     }
 
-    private void updateRecyclerView(){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    createViewModel.fetchData();
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-        });
-        thread.start();
-    }
 // TODO this might be completely useless
     private void setUpObserver() {
         createViewModel.getNameActivity().observe(getViewLifecycleOwner(), goalLabel -> {
             nameActivity.setText(goalLabel);
         });
 
-        createViewModel.getNameActivity().observe(getViewLifecycleOwner(), goalLocation -> {
+        createViewModel.getAddLocation().observe(getViewLifecycleOwner(), goalLocation -> {
             addLocation.setText(goalLocation);
         });
 

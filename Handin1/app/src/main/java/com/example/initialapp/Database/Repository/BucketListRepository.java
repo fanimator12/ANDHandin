@@ -19,6 +19,7 @@ public class BucketListRepository implements IBucketListRepository {
     private LiveData<List<BucketListGoals>> allGoals;
     private LiveData<List<BucketListGoals>> typeGoals;
     private LiveData<Float> total;
+    private LiveData<List<BucketListGoals>> completed;
 
     public BucketListRepository(Application application) {
         final BucketListDatabase database = BucketListDatabase.getInstance(application);
@@ -92,13 +93,9 @@ public class BucketListRepository implements IBucketListRepository {
     }
 
     @Override
-    public LiveData<Float> getCompletedGoals() {
-        total = bucketListDAO.getTotalGoals( FirebaseAuth.getInstance().getCurrentUser().getEmail());
-//        if (total.isCompleted() == true){
-//            return total;
-//        }
-        return total;
-    }
+    public LiveData<List<BucketListGoals>> getCompletedGoals() {
+            return completed;
+     }
 
     class InsertBucketListGoalAsync extends AsyncTask<BucketListGoals,Void,Void> {
         private BucketListDAO bucketListDAO;

@@ -23,5 +23,5 @@ public interface IBucketListRepository {
 
     void deleteAllGoals();
 
-    LiveData<Float> getCompletedGoals();
+    LiveData<List<BucketListGoals>> getCompletedGoals();
 }

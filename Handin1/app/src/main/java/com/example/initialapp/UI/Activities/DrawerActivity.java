@@ -1,4 +1,4 @@
-package com.example.initialapp.View.Activities;
+package com.example.initialapp.UI.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,20 +27,25 @@ public class DrawerActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private View drawerView;
+    private NavController navController;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+    private FloatingActionButton fab;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawer);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         fab.setOnClickListener(this::onClick);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
 
         // Passing each menu ID as a set of ID-s because each menu should be considered as top level destinations
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -48,7 +53,7 @@ public class DrawerActivity extends AppCompatActivity {
                 R.id.completedGalleryFragment, R.id.nav_about_us)
                 .setDrawerLayout(drawer)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -100,7 +105,7 @@ public class DrawerActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp() {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
@@ -109,6 +114,6 @@ public class DrawerActivity extends AppCompatActivity {
         Snackbar.make(view, "Creating new Bucket List", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
         // TODO navigating to createFragment
-//        Navigation.findNavController(this, R.id.createFragment);
+
     }
 }
