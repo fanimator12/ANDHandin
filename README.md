@@ -1,4 +1,4 @@
-# ANDHandin
+# My Bucket List
  
 TOPIC:
 
@@ -10,9 +10,9 @@ The project would focus on the opportunities and suggestions for completing task
 
 REQUIREMENTS:
 
-Following the MoSCoW prioritized requirements -
+Following the MoSCoW prioritized requirements:
 
-      - MUST HAVE:
+      # MUST HAVE:
             [x] Login, Logout functionality
             [] Create bucket lists manually
             [x] Navigation menu with multiple tab items [ ALL | WISHLIST | COMPLETED | ABOUT US | SIGN OUT ]
@@ -21,16 +21,16 @@ Following the MoSCoW prioritized requirements -
             [] Buttons [ ADD TO WISHLIST | REMOVE FROM WISHLIST | MARK AS COMPLETED ]
             [x] Location
 
-      - SHOULD HAVE:
+      # SHOULD HAVE:
             [] Search functionality
             [] Filtering options
             [] Explicit intents to display web pages in order to navigate users to the source of shared offers
             
-      - COULD HAVE:
+      # COULD HAVE:
             [] Progress bar for completing goals, tasks
             [] Notification functionaility (subscribing for beneficial deals or discounts)
             
-      - WON'T HAVE:
+      # WON'T HAVE:
             [] Chat functionaility from the app
             [] Calendar to pick dates for a specific goal from the user's bucket list (instead it can be marked as finished anytime, so it gets added to the COMPLETED list)
             [] The app won't be responsible for any fake offers, it will only provide suggestions from other websites to fulfill the users' desires
