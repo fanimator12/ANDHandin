@@ -2,7 +2,7 @@ package com.example.initialapp.RemoteSource.ServiceGenerator;
 
 import android.util.Base64;
 
-import com.example.initialapp.RemoteSource.BucketListGenerator.WebAPI.API.BucketlistApi;
+import com.example.initialapp.RemoteSource.WebAPI.API.BucketlistApi;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

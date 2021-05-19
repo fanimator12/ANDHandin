@@ -20,19 +20,16 @@ public class BucketListGoals {
     private String location;
     @ColumnInfo (name = "imageID")
     private Integer imageID;
-    @ColumnInfo (name = "description")
-    private String description;
     @ColumnInfo (name = "completed")
     private Boolean isCompleted;
 
 
-    public BucketListGoals(String user, String goal, String type, String location, Integer imageID, String description) {
+    public BucketListGoals(String user, String goal, String location, String type, Integer imageID) {
         this.user = user;
         this.goal = goal;
         this.type = type;
         this.location = location;
         this.imageID = imageID;
-        this.description = description;
         this.isCompleted = false;
     }
 
@@ -85,19 +82,11 @@ public class BucketListGoals {
         this.type = type;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public Boolean getCompleted() {
         return isCompleted;
     }
 
     public void setCompleted(Boolean completed) {
         isCompleted = completed;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

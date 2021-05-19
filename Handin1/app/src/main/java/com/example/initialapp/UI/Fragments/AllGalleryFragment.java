@@ -39,16 +39,6 @@ public class AllGalleryFragment extends Fragment {
 
     private static final String TAG = "AllGalleryFragment";
 
-//    private static final String ARG_SECTION_NUMBER = "section_number";
-//
-//    public static AllGalleryFragment newInstance(int index) {
-//        AllGalleryFragment fragment = new AllGalleryFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putInt(ARG_SECTION_NUMBER, index);
-//        fragment.setArguments(bundle);
-//        return fragment;
-//    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

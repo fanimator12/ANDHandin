@@ -36,16 +36,6 @@ public class CompletedGalleryFragment extends Fragment {
 
     private static final String TAG = "CompletedFragment";
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
-//    public static CompletedGalleryFragment newInstance(int index) {
-//        CompletedGalleryFragment fragment = new CompletedGalleryFragment();
-//        Bundle bundle = new Bundle();
-//        bundle.putInt(ARG_SECTION_NUMBER, index);
-//        fragment.setArguments(bundle);
-//        return fragment;
-//    }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

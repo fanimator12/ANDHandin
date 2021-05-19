@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
         android:text="@string/add_to_wishlist"
+        android:onClick="saveBucketlist"
         app:backgroundTint="#393838"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -131,7 +132,7 @@
         app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/typeSpinner"
         style="@style/FirebaseUI.CountrySpinner"
         android:layout_width="192dp"
         android:layout_height="37dp"

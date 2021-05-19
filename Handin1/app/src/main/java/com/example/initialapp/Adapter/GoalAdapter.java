@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.initialapp.Database.BucketListGoals;
-import com.example.initialapp.Domain.Goal;
 import com.example.initialapp.R;
 
 import java.util.ArrayList;

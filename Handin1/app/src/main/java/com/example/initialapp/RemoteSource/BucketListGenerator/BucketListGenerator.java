@@ -1,6 +1,6 @@
 package com.example.initialapp.RemoteSource.BucketListGenerator;
 
-import com.example.initialapp.RemoteSource.BucketListGenerator.WebAPI.API.BucketlistApi;
+import com.example.initialapp.RemoteSource.WebAPI.API.BucketlistApi;
 import com.example.initialapp.RemoteSource.ServiceGenerator.ServiceGenerator;
 
 import retrofit2.Retrofit;

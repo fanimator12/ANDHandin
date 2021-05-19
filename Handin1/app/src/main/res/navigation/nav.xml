@@ -40,15 +40,6 @@
             app:destination="@id/completedGalleryFragment" />
     </fragment>
     <fragment
-        android:id="@+id/descriptionFragment"
-        android:name="com.example.initialapp.UI.Fragments.DescriptionFragment"
-        android:label="Description"
-        tools:layout="@layout/fragment_description">
-        <action
-            android:id="@+id/action_descriptionFragment_to_allGalleryFragment"
-            app:destination="@id/allGalleryFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/completedGalleryFragment"
         android:name="com.example.initialapp.UI.Fragments.CompletedGalleryFragment"
         android:label="Completed List"

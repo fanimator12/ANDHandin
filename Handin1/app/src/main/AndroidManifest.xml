@@ -17,7 +17,8 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".UI.Activities.MainActivity" />
-        <activity android:name=".UI.Activities.CreateActivity" />
+        <activity android:name=".UI.Activities.CreateActivity"/>
+        <activity android:name=".UI.Activities.DescriptionActivity" />
         <activity android:name=".UI.Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

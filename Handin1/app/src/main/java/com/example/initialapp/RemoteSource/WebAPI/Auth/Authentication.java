@@ -10,9 +10,9 @@
  * Do not edit the class manually.
  */
 
-package com.example.initialapp.RemoteSource.BucketListGenerator.WebAPI.Auth;
+package com.example.initialapp.RemoteSource.WebAPI.Auth;
 
-import com.example.initialapp.RemoteSource.BucketListGenerator.WebAPI.Pair;
+import com.example.initialapp.RemoteSource.WebAPI.Pair;
 
 import java.util.Map;
 import java.util.List;
