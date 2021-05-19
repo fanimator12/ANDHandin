@@ -40,14 +40,14 @@ public class CreateActivity extends AppCompatActivity {
 
     private static final String TAG = "CreateActivity";
 
-    private CreateViewModel createViewModel;
+//    private CreateViewModel createViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        createViewModel = new ViewModelProvider(this).get(CreateViewModel.class);
+//        createViewModel = new ViewModelProvider(this).get(CreateViewModel.class);
 
         createTextView = findViewById(R.id.createTextView);
         activityTextView = findViewById(R.id.activityTextView);
@@ -109,8 +109,8 @@ public class CreateActivity extends AppCompatActivity {
                 return;
             }
 
-            createViewModel.getBucketlist(activity, location, type, image);
-            createViewModel.fetchData();
+//            createViewModel.getBucketlist(activity, location, type, image);
+//            createViewModel.fetchData();
 
             setResult(RESULT_OK);
             finish();
