@@ -1,12 +1,12 @@
 package com.example.initialapp.RemoteSource.BucketListGenerator;
 
-import com.example.initialapp.RemoteSource.BucketListGenerator.Endpoint.BucketListAPI;
+import com.example.initialapp.RemoteSource.BucketListGenerator.WebAPI.API.BucketlistApi;
 import com.example.initialapp.RemoteSource.ServiceGenerator.ServiceGenerator;
 
 import retrofit2.Retrofit;
 
 public class BucketListGenerator implements IBucketListGenerator {
-    private static BucketListAPI bucketListAPI;
+    private static BucketlistApi bucketListAPI;
     private Retrofit.Builder baseRetrofitBuilder;
 
     public BucketListGenerator() {
@@ -14,11 +14,11 @@ public class BucketListGenerator implements IBucketListGenerator {
     }
 
     @Override
-    public BucketListAPI getGoalAPI() {
+    public BucketlistApi getGoalAPI() {
         if (bucketListAPI == null) {
             bucketListAPI = baseRetrofitBuilder
                     .build()
-                    .create(BucketListAPI.class);
+                    .create(BucketlistApi.class);
         }
         return bucketListAPI;
     }

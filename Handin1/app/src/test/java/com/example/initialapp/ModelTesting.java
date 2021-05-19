@@ -1,7 +1,5 @@
 package com.example.initialapp;
 
-import com.example.initialapp.RemoteSource.RequestManager;
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,8 +10,6 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ModelTesting {
-
-//    RequestManager requestManager = RequestManager.getInstance();
 
     @Test
     public void addition_isCorrect() {

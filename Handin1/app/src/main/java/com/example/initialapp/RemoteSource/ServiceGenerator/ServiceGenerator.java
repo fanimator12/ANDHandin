@@ -2,7 +2,7 @@ package com.example.initialapp.RemoteSource.ServiceGenerator;
 
 import android.util.Base64;
 
-import com.example.initialapp.RemoteSource.BucketListGenerator.Endpoint.BucketListAPI;
+import com.example.initialapp.RemoteSource.BucketListGenerator.WebAPI.API.BucketlistApi;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -31,9 +31,9 @@ public class ServiceGenerator {
 
     private static Retrofit retrofit = retrofitBuilder.build();
 
-    private static BucketListAPI bucketListAPI = retrofit.create(BucketListAPI.class);
+    private static BucketlistApi bucketListAPI = retrofit.create(BucketlistApi.class);
 
-    public static BucketListAPI getBucketListAPI() {
+    public static BucketlistApi getBucketListAPI() {
         return bucketListAPI;
     }
 

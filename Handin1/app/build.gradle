@@ -21,6 +21,10 @@ android {
         lintOptions {
             abortOnError false
         }
+
+        packagingOptions {
+            exclude 'META-INF/DEPENDENCIES'
+        }
     }
 
     buildTypes {
@@ -105,9 +109,9 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.4.4'
 
     implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
-////    implementation "com.android.volley:volley:${volley_version}"
-////    implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
-////    implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
+    implementation "com.android.volley:volley:${volley_version}"
+    implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
+    implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
 //    implementation "org.apache.httpcomponents:httpclient-android:$httpclient_version"
 }
 }

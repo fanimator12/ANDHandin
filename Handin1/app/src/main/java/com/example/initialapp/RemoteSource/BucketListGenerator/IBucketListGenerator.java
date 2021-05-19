@@ -1,7 +1,7 @@
 package com.example.initialapp.RemoteSource.BucketListGenerator;
 
-import com.example.initialapp.RemoteSource.BucketListGenerator.Endpoint.BucketListAPI;
+import com.example.initialapp.RemoteSource.BucketListGenerator.WebAPI.API.BucketlistApi;
 
 public interface IBucketListGenerator {
-    BucketListAPI getGoalAPI();
+    BucketlistApi getGoalAPI();
 }
