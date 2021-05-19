@@ -2,6 +2,7 @@
   <library name="Gradle: com.squareup.retrofit2:converter-gson:2.8.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/../../../gradle-7.0.2/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.8.1/3dd6788fe5568b15df62735d7d16f09276989e9a/converter-gson-2.8.1.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.8.1/3dd6788fe5568b15df62735d7d16f09276989e9a/converter-gson-2.8.1.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.8.1/6cb36e044d4d7ede917e3f01140d72b41dce5db3/converter-gson-2.8.1-javadoc.jar!/" />

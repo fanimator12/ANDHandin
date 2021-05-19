@@ -23,10 +23,13 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.initialapp.Database.BucketListGoals;
 import com.example.initialapp.Database.Repository.IBucketListRepository;
 import com.example.initialapp.R;
+import com.example.initialapp.RemoteSource.WebAPI.ApiException;
 import com.example.initialapp.UI.Viewmodel.CreateViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Calendar;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public class CreateActivity extends AppCompatActivity {
 
@@ -40,14 +43,14 @@ public class CreateActivity extends AppCompatActivity {
 
     private static final String TAG = "CreateActivity";
 
-//    private CreateViewModel createViewModel;
+    private CreateViewModel createViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-//        createViewModel = new ViewModelProvider(this).get(CreateViewModel.class);
+        createViewModel = new ViewModelProvider(this).get(CreateViewModel.class);
 
         createTextView = findViewById(R.id.createTextView);
         activityTextView = findViewById(R.id.activityTextView);
@@ -69,22 +72,32 @@ public class CreateActivity extends AppCompatActivity {
         //Used to closed the keyboard after input
         methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-//        createViewModel.getBucketlist(nameActivity.toString(), addLocation.toString(), typeSpinner.toString(), imageButton.getId()).observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                try {
-//                    typeTextView.setText(s);
-//                    createViewModel.insert(new BucketListGoals(FirebaseAuth.getInstance().getCurrentUser().getEmail(), createViewModel.NEW_BUCKETLIST, addLocation.getText().toString(), typeSpinner.getSelectedItem().toString(), imageButton.getId());
-//
-//                }
-//                catch(Exception e){
-//                    e.printStackTrace();
-//                }
-//                nameActivity.getText().clear();
-//                addLocation.getText().clear();
-//                findViewById(R.id.loadingPanel).setVisibility(View.INVISIBLE);
-//            }
-//        });
+        try {
+            createViewModel.getBucketlist(nameActivity.toString(), addLocation.toString(), typeSpinner.toString(), imageButton.getId()).observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(@Nullable String s) {
+                    try {
+                        typeTextView.setText(s);
+                        createViewModel.insert(new BucketListGoals(FirebaseAuth.getInstance().getCurrentUser().getEmail(), createViewModel.NEW_BUCKETLIST, addLocation.getText().toString(), typeSpinner.getSelectedItem().toString(), imageButton.getId());
+
+                    }
+                    catch(Exception e){
+                        e.printStackTrace();
+                    }
+                    nameActivity.getText().clear();
+                    addLocation.getText().clear();
+                    findViewById(R.id.loadingPanel).setVisibility(View.INVISIBLE);
+                }
+            });
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+        } catch (ApiException e) {
+            e.printStackTrace();
+        }
 
         //Used to add new bucketlist to user's wishlist
         addToWishListButton.setOnClickListener(this::saveBucketlist);
@@ -109,8 +122,8 @@ public class CreateActivity extends AppCompatActivity {
                 return;
             }
 
-//            createViewModel.getBucketlist(activity, location, type, image);
-//            createViewModel.fetchData();
+            createViewModel.getBucketlist(activity, location, type, image);
+            createViewModel.fetchData();
 
             setResult(RESULT_OK);
             finish();

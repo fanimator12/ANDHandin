@@ -1,10 +1,13 @@
 package com.example.initialapp.EventBusObjects;
 
+import java.util.ArrayList;
+
 public class GoalEvent {
     private String goalLabel;
     private String goalLocation;
     private String goalType;
     private Integer goalImage;
+    private ArrayList<String> goalAttributes;
 
     public String getType() {
         return goalType;
@@ -48,10 +51,7 @@ public class GoalEvent {
         this.completedGoals = completedGoals;
     }
 
-    public void setGoal(String label, String location, String type, Integer image) {
-        this.goalLabel = label;
-        this.goalLocation = location;
-        this.goalType = type;
-        this.goalImage = image;
+    public ArrayList<String> setGoalAttributes() {
+        return goalAttributes;
     }
 }

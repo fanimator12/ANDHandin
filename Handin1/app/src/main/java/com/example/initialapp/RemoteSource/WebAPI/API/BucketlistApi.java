@@ -29,6 +29,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
+import retrofit2.Call;
+
 public class BucketlistApi {
     String basePath = "https://bucketlist-api1.herokuapp.com";
     ApiInvoker apiInvoker = ApiInvoker.getInstance();
@@ -54,7 +56,7 @@ public class BucketlistApi {
      *
      * @return void
      */
-    public void bucketlistGet() throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    public Call<Bucketlist> bucketlistGet() throws TimeoutException, ExecutionException, InterruptedException, ApiException {
         Object postBody = null;
 
         // create path and map variables
@@ -84,9 +86,9 @@ public class BucketlistApi {
         try {
             String localVarResponse = apiInvoker.invokeAPI(basePath, path, "GET", queryParams, postBody, headerParams, formParams, contentType, authNames);
             if (localVarResponse != null) {
-                return;
+                return null;
             } else {
-                return;
+                return null;
             }
         } catch (ApiException ex) {
             throw ex;

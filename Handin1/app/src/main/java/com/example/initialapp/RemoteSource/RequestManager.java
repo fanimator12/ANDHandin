@@ -8,6 +8,7 @@ import com.example.initialapp.EventBusObjects.GoalEvent;
 import com.example.initialapp.RemoteSource.ServiceGenerator.ServiceGenerator;
 import com.example.initialapp.RemoteSource.WebAPI.API.BucketlistApi;
 import com.example.initialapp.RemoteSource.WebAPI.ApiException;
+import com.example.initialapp.RemoteSource.WebAPI.Endpoint;
 import com.example.initialapp.RemoteSource.WebAPI.Model.Bucketlist;
 
 import org.greenrobot.eventbus.EventBus;
@@ -50,22 +51,21 @@ public class RequestManager {
 
     public void getBucketlist(String activity, String location, String type, Integer imageID) throws InterruptedException, ExecutionException, TimeoutException, ApiException {
 
-//        Call<Bucketlist> call = bucketlistApi.bucketlistGet();
-//        call.enqueue(new Callback<Bucketlist>() {
-//            @Override
-//            public void onResponse(Call<Bucketlist> call, Response<Bucketlist> response) {
-//                if (response.code() == 200) {
-//                    GoalEvent event = new GoalEvent();
-//                    event.setGoal(response.body().);
-//                    EventBus.getDefault().post(event);
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<Bucketlist> call, Throwable t) {
-//                Log.i("Retrofit", "Something went wrong");
-//
-//            }
-//        });
-//    }
-}
+        Call<Bucketlist> call = Endpoint.postBucketlistItem();
+        call.enqueue(new Callback<Bucketlist>() {
+            @Override
+            public void onResponse(Call<Bucketlist> call, Response<Bucketlist> response) {
+                if (response.code() == 200) {
+                    GoalEvent event = new GoalEvent();
+                    event.setGoalAttributes(response.body());
+                    EventBus.getDefault().post(event);
+                }
+            }
+            @Override
+            public void onFailure(Call<Bucketlist> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong");
+
+            }
+        });
+    }
 }
