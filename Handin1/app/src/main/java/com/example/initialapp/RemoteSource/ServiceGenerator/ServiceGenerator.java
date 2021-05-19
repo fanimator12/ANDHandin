@@ -22,7 +22,7 @@ public class ServiceGenerator {
     public static Retrofit.Builder getInstance() {
         if (retrofitBuilder == null) {
             retrofitBuilder = new Retrofit.Builder()
-                    .baseUrl("https://ladybbucketlist.docs.apiary.io/")
+                    .baseUrl("https://bucketlist-api1.herokuapp.com/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(okHttpClient);
         }

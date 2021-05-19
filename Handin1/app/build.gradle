@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+group = 'io.swagger'
 
 android {
     compileSdkVersion 30
@@ -26,12 +27,19 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    ext {
+        swagger_annotations_version = "1.5.0"
+        volley_version = "1.1.0"
+        httpmime_version = "4.5.2"
+        httpcore_version = "4.4.4"
+        httpclient_version = "4.3.3"
 }
 
 dependencies {
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
@@ -89,4 +97,11 @@ dependencies {
 
     //Animation
     implementation 'com.airbnb.android:lottie:3.4.4'
+
+    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
+////    implementation "com.android.volley:volley:${volley_version}"
+////    implementation "org.apache.httpcomponents:httpcore:$httpcore_version"
+////    implementation "org.apache.httpcomponents:httpmime:$httpmime_version"
+//    implementation "org.apache.httpcomponents:httpclient-android:$httpclient_version"
+}
 }

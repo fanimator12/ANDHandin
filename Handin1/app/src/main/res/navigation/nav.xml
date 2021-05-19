@@ -47,9 +47,9 @@
     </fragment>
     <fragment
         android:id="@+id/createFragment"
-        android:name="com.example.initialapp.UI.Fragments.CreateFragment"
+        android:name="com.example.initialapp.UI.Activities.CreateActivity"
         android:label="Create new Bucketlist"
-        tools:layout="@layout/fragment_create">
+        tools:layout="@layout/activity_create">
         <action
             android:id="@+id/action_createFragment_to_galleryFragment"
             app:destination="@id/galleryFragment" />

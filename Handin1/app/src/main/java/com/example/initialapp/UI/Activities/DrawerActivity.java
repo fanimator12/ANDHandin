@@ -23,7 +23,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class DrawerActivity extends AppCompatActivity {
+public class DrawerActivity extends AppCompatActivity  {
 
     private AppBarConfiguration mAppBarConfiguration;
     private View drawerView;
@@ -114,6 +114,8 @@ public class DrawerActivity extends AppCompatActivity {
         Snackbar.make(view, "Creating new Bucket List", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
         // TODO navigating to createFragment
-
+        Intent intent = new Intent(getApplicationContext(), CreateActivity.class);
+            intent.putExtra("position", 1);
+            startActivity(intent);
     }
 }
