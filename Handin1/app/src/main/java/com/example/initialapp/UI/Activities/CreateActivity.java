@@ -27,8 +27,6 @@ public class CreateActivity extends AppCompatActivity {
 
     private static final String TAG = "CreateActivity";
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
