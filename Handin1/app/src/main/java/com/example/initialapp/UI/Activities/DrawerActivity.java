@@ -113,7 +113,7 @@ public class DrawerActivity extends AppCompatActivity  {
     public void onClick(View view) {
         Snackbar.make(view, "Creating new Bucket List", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
-        // TODO navigating to createFragment
+        // TODO navigating to createActivity
         Intent intent = new Intent(getApplicationContext(), CreateActivity.class);
             intent.putExtra("position", 1);
             startActivity(intent);

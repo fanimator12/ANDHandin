@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  */
 public class ModelTesting {
 
-    RequestManager requestManager = RequestManager.getInstance();
+//    RequestManager requestManager = RequestManager.getInstance();
 
     @Test
     public void addition_isCorrect() {

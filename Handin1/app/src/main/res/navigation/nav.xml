@@ -21,9 +21,6 @@
         <action
             android:id="@+id/action_allGalleryFragment_to_completedGalleryFragment"
             app:destination="@id/completedGalleryFragment" />
-        <action
-            android:id="@+id/action_allGalleryFragment_to_createFragment"
-            app:destination="@id/createFragment" />
     </fragment>
     <fragment
         android:id="@+id/nav_about_us"
@@ -41,18 +38,6 @@
         <action
             android:id="@+id/action_galleryFragment_to_completedGalleryFragment"
             app:destination="@id/completedGalleryFragment" />
-        <action
-            android:id="@+id/action_galleryFragment_to_createFragment"
-            app:destination="@id/createFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/createFragment"
-        android:name="com.example.initialapp.UI.Activities.CreateActivity"
-        android:label="Create new Bucketlist"
-        tools:layout="@layout/activity_create">
-        <action
-            android:id="@+id/action_createFragment_to_galleryFragment"
-            app:destination="@id/galleryFragment" />
     </fragment>
     <fragment
         android:id="@+id/descriptionFragment"
