@@ -4,12 +4,10 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.initialapp.Database.Authorization;
 import com.example.initialapp.EventBusObjects.GoalEvent;
 import com.example.initialapp.RemoteSource.ServiceGenerator.ServiceGenerator;
 import com.example.initialapp.RemoteSource.WebAPI.Model.Auth;
 import com.example.initialapp.RemoteSource.WebAPI.Model.Bucketlist;
-import com.example.initialapp.RemoteSource.WebAPI.Model.Item;
 import com.example.initialapp.RemoteSource.WebAPI.Model.Token;
 
 import org.greenrobot.eventbus.EventBus;
@@ -26,8 +24,6 @@ public class RequestManager {
     BucketListAPI bucketlistAPI;
     private MutableLiveData<String> output;
     private MutableLiveData<Token> token;
-    Item item;
-    Bucketlist bucketlist;
     private MutableLiveData<List<String>> bucketlistLive;
     private List<String> bucketlists;
     private Auth user;
@@ -85,26 +81,6 @@ public class RequestManager {
 
         return bucketlistLive;
     }
-
-//    public void getBucketlistItem(String token) {
-//
-//        Call<Bucketlist> call = bucketlistAPI.getBucketlistItem(token, item);
-//        call.enqueue(new Callback<Bucketlist>() {
-//            @Override
-//            public void onResponse(Call<Bucketlist> call, Response<Bucketlist> response) {
-//                if (response.code() == 200) {
-//                    GoalEvent event = new GoalEvent();
-//                    event.setGoalLabel(response.body().getTitle()+"");
-//                    EventBus.getDefault().post(event);
-//                }
-//            }
-//            @Override
-//            public void onFailure(Call<Bucketlist> call, Throwable t) {
-//                Log.i("Retrofit", "Something went wrong");
-//
-//            }
-//        });
-//    }
 
     public void postBucketlist(String token, String activity) {
         Bucketlist bucketlist = new Bucketlist();

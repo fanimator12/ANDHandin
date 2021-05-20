@@ -33,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         checkIfSignedIn();
         setContentView(R.layout.activity_login);
-
-
     }
 
     private void checkIfSignedIn() {
@@ -42,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         if (user != null) {
             loginViewModel.postLogin();
         }
-            goToMainActivity();
+        goToMainActivity();
     }
 
     private void goToMainActivity() {
