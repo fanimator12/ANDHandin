@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.initialapp.R;
 import com.example.initialapp.UI.Viewmodel.FrontPageViewModel;
 
@@ -34,16 +33,6 @@ public class FrontPageFragment extends Fragment {
         View frontPageView = inflater.inflate(R.layout.fragment_frontpage, container, false);
 
         InputStream is = getResources().openRawResource(R.raw.travel_animation);
-        //TODO doesnt work
-        LottieAnimationView travelanimation = frontPageView.findViewById(R.id.lottieTravel);
-        travelanimation.playAnimation();
-
-        travelanimation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                travelanimation.playAnimation();
-            }
-        });
         progressBar = frontPageView.findViewById(R.id.progressBar);
         setUpObserver();
         updateProgressBar();

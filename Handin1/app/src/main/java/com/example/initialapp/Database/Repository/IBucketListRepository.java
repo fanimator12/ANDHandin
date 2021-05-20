@@ -18,6 +18,10 @@ public interface IBucketListRepository {
 
     void delete(BucketListGoals bucketListGoals);
 
+    void update(BucketListGoals bucketListGoals);
+
+    LiveData<List<BucketListGoals>> getWishlist();
+
     void deleteAllGoals();
 
     LiveData<List<BucketListGoals>> getCompletedGoals();

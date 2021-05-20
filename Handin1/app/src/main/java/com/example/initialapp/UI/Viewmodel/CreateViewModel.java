@@ -56,7 +56,7 @@ public class CreateViewModel extends AndroidViewModel {
         String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTYsImV4cCI6MTYyMTY0MDkzMH0.EB0tVMntHPYFLMqSyy5RGHN-bH7c19HOjpTV258usok";
         manager.postBucketlist(token,activity);
 
-        BucketListGoals bucketListGoals = new BucketListGoals(FirebaseAuth.getInstance().getCurrentUser().getEmail(),activity);
+        BucketListGoals bucketListGoals = new BucketListGoals("user",activity);
         bucketListRepository.insert(bucketListGoals);
     }
 
