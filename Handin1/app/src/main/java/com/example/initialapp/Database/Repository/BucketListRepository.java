@@ -5,9 +5,11 @@ import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.initialapp.Database.Authorization;
 import com.example.initialapp.Database.BucketListDAO;
 import com.example.initialapp.Database.BucketListDatabase;
 import com.example.initialapp.Database.BucketListGoals;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Token;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
@@ -21,6 +23,7 @@ public class BucketListRepository implements IBucketListRepository {
     private static BucketListRepository instance;
     private LiveData<List<BucketListGoals>> allGoals;
     private LiveData<List<BucketListGoals>> completed;
+    private LiveData<Authorization> token;
     private LiveData<BucketListGoals> goal;
     private final ExecutorService executorService;
 
@@ -48,7 +51,7 @@ public class BucketListRepository implements IBucketListRepository {
     @Override
     public LiveData<List<BucketListGoals>> getAllGoals() {
 
-        return allGoals;
+        return bucketListDAO.getAllGoals();
     }
 
     @Override
@@ -69,6 +72,51 @@ public class BucketListRepository implements IBucketListRepository {
     @Override
     public LiveData<List<BucketListGoals>> getCompletedGoals() {
         return completed;
+    }
+
+    @Override
+    public LiveData<List<Authorization>> getToken() {
+        return bucketListDAO.getToken();
+    }
+
+    @Override
+    public void updateToken(Authorization previous, Authorization updated){
+        bucketListDAO.delete(previous);
+        bucketListDAO.insert(updated);
+//        executorService.execute(() -> new UpdateTokenAsync(bucketListDAO).execute(previous, updated));
+    }
+
+    @Override
+    public void insertToken(Authorization authorization){
+        executorService.execute(() -> new InsertTokenAsync(bucketListDAO).execute(authorization));
+    }
+
+    class UpdateTokenAsync extends AsyncTask<Authorization, Void, Void> {
+        private BucketListDAO bucketListDAO;
+
+        public UpdateTokenAsync(BucketListDAO bucketListDAO) {
+            this.bucketListDAO = bucketListDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Authorization... authorizations) {
+            bucketListDAO.delete(authorizations[0]);
+            return null;
+        }
+    }
+
+    class InsertTokenAsync extends AsyncTask<Authorization, Void, Void> {
+        private BucketListDAO bucketListDAO;
+
+        public InsertTokenAsync(BucketListDAO bucketListDAO) {
+            this.bucketListDAO = bucketListDAO;
+        }
+
+        @Override
+        protected Void doInBackground(Authorization... authorizations) {
+            bucketListDAO.insert(authorizations[0]);
+            return null;
+        }
     }
 
     class InsertBucketListGoalAsync extends AsyncTask<BucketListGoals, Void, Void> {

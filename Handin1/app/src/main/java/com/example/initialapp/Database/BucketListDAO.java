@@ -32,5 +32,14 @@ public interface BucketListDAO {
 
     @Query("SELECT * FROM bucketlist_goals WHERE completed IS 'true'")
     LiveData<List<BucketListGoals>> getCompletedGoals();
+
+    @Insert
+    void insert(Authorization authorization);
+
+    @Delete
+    void delete(Authorization authorization);
+
+    @Query("SELECT * FROM authorization ")
+    LiveData<List<Authorization>> getToken();
 }
 

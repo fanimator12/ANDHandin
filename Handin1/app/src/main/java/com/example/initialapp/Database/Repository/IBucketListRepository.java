@@ -1,8 +1,11 @@
 package com.example.initialapp.Database.Repository;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
+import com.example.initialapp.Database.Authorization;
 import com.example.initialapp.Database.BucketListGoals;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Token;
 
 import java.util.List;
 
@@ -18,4 +21,10 @@ public interface IBucketListRepository {
     void deleteAllGoals();
 
     LiveData<List<BucketListGoals>> getCompletedGoals();
+
+    LiveData<List<Authorization>> getToken();
+
+    void updateToken(Authorization previous, Authorization updated);
+
+    void insertToken(Authorization authorization);
 }

@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.initialapp.Database.BucketListGoals;
 import com.example.initialapp.Database.Repository.BucketListRepository;
 import com.example.initialapp.Database.Repository.IBucketListRepository;
+import com.example.initialapp.RemoteSource.RequestManager;
 
 import java.util.List;
 
@@ -20,8 +21,9 @@ public class CompletedViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> goalCheckBox;
     private MutableLiveData<Integer> goalIconID;
 
-    // TODO the whole app crashes just beacuse of requestmanager, solve ASAP
-//    RequestManager requestManager = RequestManager.getInstance();
+    String token;
+
+    RequestManager manager = RequestManager.getInstance();
 
     public CompletedViewModel(@NonNull Application application) {
         super(application);
@@ -33,6 +35,10 @@ public class CompletedViewModel extends AndroidViewModel {
 
         bucketListRepository = BucketListRepository.getInstance(application);
 
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTYsImV4cCI6MTYyMTY0MDkzMH0.EB0tVMntHPYFLMqSyy5RGHN-bH7c19HOjpTV258usok";
+
+        manager.getBucketlist(token);
+        fetchData();
     }
 
     public void getGoal() {
@@ -52,7 +58,7 @@ public class CompletedViewModel extends AndroidViewModel {
     }
 
     public void fetchData(){
-        bucketListRepository.getAllGoals();
+        bucketListRepository.getCompletedGoals();
     }
 
     public LiveData<List<BucketListGoals>> getCompletedGoals() {

@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.initialapp.Database.BucketListGoals;
 import com.example.initialapp.Database.Repository.BucketListRepository;
 import com.example.initialapp.Database.Repository.IBucketListRepository;
+import com.example.initialapp.RemoteSource.RequestManager;
 
 import java.util.List;
 
@@ -19,6 +20,10 @@ public class WishlistGalleryViewModel extends AndroidViewModel {
     private MutableLiveData<String> goalLabel;
     private MutableLiveData<Boolean> goalCheckBox;
     private MutableLiveData<Integer> goalIconID;
+
+    String token;
+
+    RequestManager manager = RequestManager.getInstance();
 
     public WishlistGalleryViewModel(@NonNull Application application) {
         super(application);
@@ -30,6 +35,10 @@ public class WishlistGalleryViewModel extends AndroidViewModel {
 
         bucketListRepository = BucketListRepository.getInstance(application);
 
+        token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTYsImV4cCI6MTYyMTY0MDkzMH0.EB0tVMntHPYFLMqSyy5RGHN-bH7c19HOjpTV258usok";
+
+        manager.getBucketlist(token);
+        fetchData();
     }
 
     public void getGoal() {

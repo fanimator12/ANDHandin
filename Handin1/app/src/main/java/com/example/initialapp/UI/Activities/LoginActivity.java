@@ -1,6 +1,7 @@
 package com.example.initialapp.UI.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,27 +9,39 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.initialapp.R;
+import com.example.initialapp.RemoteSource.RequestManager;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Auth;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Bucketlist;
+import com.example.initialapp.UI.Viewmodel.AllGalleryViewModel;
+import com.example.initialapp.UI.Viewmodel.LoginViewModel;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final int SIGN_IN = 42;
+    private LoginViewModel loginViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         checkIfSignedIn();
         setContentView(R.layout.activity_login);
+
+
     }
 
     private void checkIfSignedIn() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null)
+        if (user != null) {
+            loginViewModel.postLogin();
+        }
             goToMainActivity();
     }
 

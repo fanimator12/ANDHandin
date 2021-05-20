@@ -96,8 +96,7 @@ public class CreateActivity extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
             Toast.makeText(this, text, duration).show();
 
-            //TODO postBucketlistItem doesnt work
-            createViewModel.postBucketlistItem(activity);
+            createViewModel.postBucketlist(activity);
             createViewModel.fetchData();
 
             setResult(RESULT_OK);
