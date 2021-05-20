@@ -6,17 +6,13 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.initialapp.EventBusObjects.GoalEvent;
 import com.example.initialapp.RemoteSource.ServiceGenerator.ServiceGenerator;
-import com.example.initialapp.RemoteSource.WebAPI.API.BucketlistApi;
-import com.example.initialapp.RemoteSource.WebAPI.ApiException;
-import com.example.initialapp.RemoteSource.WebAPI.Endpoint;
 import com.example.initialapp.RemoteSource.WebAPI.Model.Bucketlist;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Item;
 
 import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,21 +20,25 @@ import retrofit2.Response;
 
 public class RequestManager {
     private static RequestManager instance;
-    BucketlistApi bucketlistApi;
+    BucketListAPI bucketlistAPI;
     private MutableLiveData<String> output;
-    private MutableLiveData<List<String>> itemsLive;
-    private List<String> items;
+    Item item;
+    Bucketlist bucketlist;
+    private MutableLiveData<List<String>> bucketlistLive;
+    private List<String> bucketlists;
     String user;
 
+    private int resultStart = 0;
+    public static final int RESULT_LIMIT = 100;
 
     private RequestManager() {
 
         output = new MutableLiveData<>();
-        itemsLive = new MutableLiveData<>();
-        items = new ArrayList<String>();
-        bucketlistApi = ServiceGenerator.getBucketListAPI();
+        bucketlistLive = new MutableLiveData<>();
+        bucketlists = new ArrayList<String>();
+        bucketlistAPI = ServiceGenerator.getBucketListAPI();
 
-        user =  ServiceGenerator.getAuthHeader("fanimator","hungary");
+        user = ServiceGenerator.getAuthHeader("fanimator","hungary");
     }
 
     public static synchronized RequestManager getInstance() {
@@ -48,21 +48,60 @@ public class RequestManager {
         return instance;
     }
 
+    public void getBucketlist() {
 
-    public void getBucketlist(String activity, String location, String type, Integer imageID) throws InterruptedException, ExecutionException, TimeoutException, ApiException {
-
-        Call<Bucketlist> call = Endpoint.postBucketlistItem();
+        Call<Bucketlist> call = bucketlistAPI.getBucketlist(bucketlist);
         call.enqueue(new Callback<Bucketlist>() {
             @Override
             public void onResponse(Call<Bucketlist> call, Response<Bucketlist> response) {
                 if (response.code() == 200) {
                     GoalEvent event = new GoalEvent();
-                    event.setGoalAttributes(response.body());
+                    event.setGoalLabel(response.body().getTitle()+"");
                     EventBus.getDefault().post(event);
                 }
             }
             @Override
             public void onFailure(Call<Bucketlist> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong");
+
+            }
+        });
+    }
+
+    public void getBucketlistItem() {
+
+        Call<Bucketlist> call = bucketlistAPI.getBucketlistItem(item);
+        call.enqueue(new Callback<Bucketlist>() {
+            @Override
+            public void onResponse(Call<Bucketlist> call, Response<Bucketlist> response) {
+                if (response.code() == 200) {
+                    GoalEvent event = new GoalEvent();
+                    event.setGoalLabel(response.body().getTitle()+"");
+                    EventBus.getDefault().post(event);
+                }
+            }
+            @Override
+            public void onFailure(Call<Bucketlist> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong");
+
+            }
+        });
+    }
+
+    public void postBucketlistItem() {
+
+        Call<Item> call = bucketlistAPI.postBucketlistItem(item);
+        call.enqueue(new Callback<Item>() {
+            @Override
+            public void onResponse(Call<Item> call, Response<Item> response) {
+                if (response.code() == 200) {
+                    GoalEvent event = new GoalEvent();
+                    event.setGoalLabel(response.body().getName()+"");
+                    EventBus.getDefault().post(event);
+                }
+            }
+            @Override
+            public void onFailure(Call<Item> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong");
 
             }

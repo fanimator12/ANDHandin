@@ -13,10 +13,6 @@ public interface IBucketListRepository {
 
     LiveData<List<BucketListGoals>> getAllGoals();
 
-    LiveData<Float> getTotalGoals();
-
-    LiveData<List<BucketListGoals>> getAllGoalsByType(String type);
-
     void insert(BucketListGoals bucketListGoals);
 
     void delete(BucketListGoals bucketListGoals);

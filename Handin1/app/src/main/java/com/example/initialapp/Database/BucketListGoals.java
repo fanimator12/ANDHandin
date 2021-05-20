@@ -14,22 +14,13 @@ public class BucketListGoals {
     private String user;
     @ColumnInfo(name = "goal")
     private String goal;
-    @ColumnInfo(name = "type")
-    private String type;
-    @ColumnInfo(name = "location")
-    private String location;
-    @ColumnInfo (name = "imageID")
-    private Integer imageID;
     @ColumnInfo (name = "completed")
     private Boolean isCompleted;
 
 
-    public BucketListGoals(String user, String goal, String location, String type, Integer imageID) {
+    public BucketListGoals(String user, String goal) {
         this.user = user;
         this.goal = goal;
-        this.type = type;
-        this.location = location;
-        this.imageID = imageID;
         this.isCompleted = false;
     }
 
@@ -40,22 +31,6 @@ public class BucketListGoals {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public Integer getImageID() {
-        return imageID;
-    }
-
-    public void setImageID(Integer imageID) {
-        this.imageID = imageID;
     }
 
     public int getId() {
@@ -72,14 +47,6 @@ public class BucketListGoals {
 
     public void setGoal(String goal) {
         this.goal = goal;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public Boolean getCompleted() {

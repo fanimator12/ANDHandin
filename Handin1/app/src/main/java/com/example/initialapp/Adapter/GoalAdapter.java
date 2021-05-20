@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,7 +36,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
         viewHolder.label.setText(mGoals.get(position).getGoal());
-        viewHolder.icon.setImageResource(mGoals.get(position).getImageID());
+        viewHolder.checkbox.setChecked(mGoals.get(position).getCompleted());
     }
 
     @Override
@@ -55,11 +56,13 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView label;
+        CheckBox checkbox;
         ImageView icon;
 
         ViewHolder(View goalView) {
             super(goalView);
             label = goalView.findViewById(R.id.goal_title);
+            checkbox = goalView.findViewById(R.id.completedCheckBox);
             icon = goalView.findViewById(R.id.goal_icon);
         }
 

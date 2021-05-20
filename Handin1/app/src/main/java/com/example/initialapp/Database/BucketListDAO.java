@@ -30,12 +30,6 @@ public interface BucketListDAO {
     @Query("SELECT goal FROM bucketlist_goals")
     LiveData<String> getGoal();
 
-    //Does not work
-    @Query("SELECT sum(goal) FROM bucketlist_goals WHERE user LIKE :user")
-    LiveData<Float> getTotalGoals(String user);
-
-    @Query("SELECT * FROM bucketlist_goals WHERE type LIKE :type AND user LIKE :user ORDER BY id DESC")
-    LiveData<List<BucketListGoals>> getAllGoalsByType(String type, String user);
 
 //    @Query("SELECT * FROM bucketlist_goals WHERE completed IS 'true'")
 //    LiveData<Float> getCompletedGoals();

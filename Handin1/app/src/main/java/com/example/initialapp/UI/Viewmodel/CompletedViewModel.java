@@ -57,10 +57,6 @@ public class CompletedViewModel extends AndroidViewModel {
         return bucketListRepository.getCompletedGoals();
     }
 
-    public void insert(BucketListGoals bucketListGoals){
-        bucketListRepository.insert(bucketListGoals);
-    }
-
     public void delete(BucketListGoals bucketListGoals){
         bucketListRepository.delete(bucketListGoals);
     }

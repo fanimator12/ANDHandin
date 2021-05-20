@@ -17,8 +17,6 @@ public class BucketListRepository implements IBucketListRepository {
     private BucketListDAO bucketListDAO;
     private static BucketListRepository instance;
     private LiveData<List<BucketListGoals>> allGoals;
-    private LiveData<List<BucketListGoals>> typeGoals;
-    private LiveData<Float> total;
     private LiveData<List<BucketListGoals>> completed;
 
     public BucketListRepository(Application application) {
@@ -63,18 +61,6 @@ public class BucketListRepository implements IBucketListRepository {
     public LiveData<List<BucketListGoals>> getAllGoals(){
 
         return allGoals;
-    }
-
-    @Override
-    public LiveData<Float> getTotalGoals(){
-        total = bucketListDAO.getTotalGoals( FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        return total;
-    }
-
-    @Override
-    public LiveData<List<BucketListGoals>> getAllGoalsByType(String type){
-        typeGoals = bucketListDAO.getAllGoalsByType(type, FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        return typeGoals;
     }
 
     @Override
