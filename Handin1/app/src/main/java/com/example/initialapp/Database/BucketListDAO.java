@@ -30,12 +30,8 @@ public interface BucketListDAO {
     @Query("SELECT goal FROM bucketlist_goals")
     LiveData<String> getGoal();
 
-    @Query("SELECT * FROM bucketlist_goals WHERE completed IS 1")
+    @Query("SELECT * FROM bucketlist_goals WHERE completed IS 'true'")
     LiveData<List<BucketListGoals>> getCompletedGoals();
-
-
-    @Query("SELECT * FROM bucketlist_goals WHERE completed IS 0")
-    LiveData<List<BucketListGoals>> getWishlist();
 
     @Insert
     void insert(Authorization authorization);

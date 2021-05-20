@@ -36,6 +36,7 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
         viewHolder.label.setText(mGoals.get(position).getGoal());
+        viewHolder.checkbox.setChecked(mGoals.get(position).getCompleted());
     }
 
     @Override
@@ -55,11 +56,13 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView label;
+        CheckBox checkbox;
         ImageView icon;
 
         ViewHolder(View goalView) {
             super(goalView);
             label = goalView.findViewById(R.id.goal_title);
+            checkbox = goalView.findViewById(R.id.completedCheckBox);
             icon = goalView.findViewById(R.id.goal_icon);
         }
 

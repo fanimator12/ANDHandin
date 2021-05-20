@@ -63,7 +63,6 @@ public class CompletedGalleryFragment extends Fragment {
                         mGoalAdapter.setGoals(bucketListGoals);
                     }
                 });
-                error.setVisibility(View.GONE);
             }
         } catch (Exception e) {
             error.setVisibility(View.VISIBLE);

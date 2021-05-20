@@ -16,8 +16,6 @@ public interface IBucketListRepository {
 
     void insert(BucketListGoals bucketListGoals);
 
-    void update(BucketListGoals bucketListGoals);
-
     void delete(BucketListGoals bucketListGoals);
 
     void deleteAllGoals();
@@ -29,6 +27,4 @@ public interface IBucketListRepository {
     void updateToken(Authorization previous, Authorization updated);
 
     void insertToken(Authorization authorization);
-
-    LiveData<List<BucketListGoals>> getWishlist();
 }

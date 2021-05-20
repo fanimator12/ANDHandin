@@ -66,7 +66,6 @@ public class AllGalleryFragment extends Fragment {
                         mGoalAdapter.setGoals(bucketListGoals);
                     }
                 });
-                error.setVisibility(View.GONE);
             }
         } catch (Exception e) {
             error.setVisibility(View.VISIBLE);
@@ -118,5 +117,10 @@ public class AllGalleryFragment extends Fragment {
         mGoalList.setHasFixedSize(true);
         mGoalAdapter = new GoalAdapter();
         mGoalList.setAdapter(mGoalAdapter);
+    }
+
+    //TODO
+    private void searchGoal(){
+
     }
 }

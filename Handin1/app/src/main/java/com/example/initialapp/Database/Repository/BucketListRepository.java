@@ -53,19 +53,8 @@ public class BucketListRepository implements IBucketListRepository {
     }
 
     @Override
-    public LiveData<List<BucketListGoals>> getWishlist() {
-
-        return bucketListDAO.getWishlist();
-    }
-
-    @Override
     public void insert(BucketListGoals bucketListGoals) {
         executorService.execute(() -> new InsertBucketListGoalAsync(bucketListDAO).execute(bucketListGoals));
-    }
-
-    @Override
-    public void update(BucketListGoals bucketListGoals) {
-        executorService.execute(() -> new UpdateBucketListGoalAsync(bucketListDAO).execute(bucketListGoals));
     }
 
     @Override
@@ -92,6 +81,7 @@ public class BucketListRepository implements IBucketListRepository {
     public void updateToken(Authorization previous, Authorization updated){
         bucketListDAO.delete(previous);
         bucketListDAO.insert(updated);
+//        executorService.execute(() -> new UpdateTokenAsync(bucketListDAO).execute(previous, updated));
     }
 
     @Override
@@ -123,20 +113,6 @@ public class BucketListRepository implements IBucketListRepository {
         @Override
         protected Void doInBackground(Authorization... authorizations) {
             bucketListDAO.insert(authorizations[0]);
-            return null;
-        }
-    }
-
-    class UpdateBucketListGoalAsync extends AsyncTask<BucketListGoals, Void, Void> {
-        private BucketListDAO bucketListDAO;
-
-        public UpdateBucketListGoalAsync(BucketListDAO bucketListDAO) {
-            this.bucketListDAO = bucketListDAO;
-        }
-
-        @Override
-        protected Void doInBackground(BucketListGoals... bucketListGoals) {
-            bucketListDAO.update(bucketListGoals[0]);
             return null;
         }
     }
