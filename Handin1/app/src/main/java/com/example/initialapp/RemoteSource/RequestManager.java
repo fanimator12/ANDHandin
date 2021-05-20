@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.initialapp.EventBusObjects.GoalEvent;
 import com.example.initialapp.RemoteSource.ServiceGenerator.ServiceGenerator;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Auth;
 import com.example.initialapp.RemoteSource.WebAPI.Model.Bucketlist;
 import com.example.initialapp.RemoteSource.WebAPI.Model.Item;
 
@@ -38,7 +39,11 @@ public class RequestManager {
         bucketlists = new ArrayList<String>();
         bucketlistAPI = ServiceGenerator.getBucketListAPI();
 
-        user = ServiceGenerator.getAuthHeader("fanimator","hungary");
+        //specific user so far
+        //TODO
+//        String email = (String) Auth.setEmail("franciska.torok@yahoo.com");
+//        String password = (String) Auth.setPassword("hungary");
+//        user = ServiceGenerator.getAuthHeader(email, password);
     }
 
     public static synchronized RequestManager getInstance() {
@@ -50,7 +55,7 @@ public class RequestManager {
 
     public void getBucketlist() {
 
-        Call<Bucketlist> call = bucketlistAPI.getBucketlist(bucketlist);
+        Call<Bucketlist> call = bucketlistAPI.getBucketlist(bucketlist.toString());
         call.enqueue(new Callback<Bucketlist>() {
             @Override
             public void onResponse(Call<Bucketlist> call, Response<Bucketlist> response) {
@@ -88,9 +93,9 @@ public class RequestManager {
         });
     }
 
-    public void postBucketlistItem() {
+    public void postBucketlistItem(String activity) {
 
-        Call<Item> call = bucketlistAPI.postBucketlistItem(item);
+        Call<Item> call = bucketlistAPI.postBucketlistItem(activity);
         call.enqueue(new Callback<Item>() {
             @Override
             public void onResponse(Call<Item> call, Response<Item> response) {
@@ -104,6 +109,40 @@ public class RequestManager {
             public void onFailure(Call<Item> call, Throwable t) {
                 Log.i("Retrofit", "Something went wrong");
 
+            }
+        });
+    }
+
+    public void postRegister() {
+
+        Call<Auth> call = bucketlistAPI.postRegister(user);
+        call.enqueue(new Callback<Auth>() {
+            @Override
+            public void onResponse(Call<Auth> call, Response<Auth> response) {
+                if (response.code() == 200) {
+                    Log.i("Retrofit", "Authorization enabled");
+                }
+            }
+            @Override
+            public void onFailure(Call<Auth> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong");
+            }
+        });
+    }
+
+    public void postLogin() {
+
+        Call<Auth> call = bucketlistAPI.postLogin(user);
+        call.enqueue(new Callback<Auth>() {
+            @Override
+            public void onResponse(Call<Auth> call, Response<Auth> response) {
+                if (response.code() == 200) {
+                    Log.i("Retrofit", "Authorization enabled");
+                }
+            }
+            @Override
+            public void onFailure(Call<Auth> call, Throwable t) {
+                Log.i("Retrofit", "Something went wrong");
             }
         });
     }

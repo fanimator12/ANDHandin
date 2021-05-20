@@ -16,6 +16,9 @@ import com.example.initialapp.RemoteSource.RequestManager;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateViewModel extends AndroidViewModel {
     public final static String NEW_BUCKETLIST_ITEM = "Bucketlist";
     private IBucketListRepository bucketListRepository;
@@ -47,12 +50,8 @@ public class CreateViewModel extends AndroidViewModel {
         Log.i("Goal Label", goalEvent.getGoalLabel());
     }
 
-    public void getBucketlistItem(){
-        manager.getBucketlistItem();
-    }
-
-    public void postBucketlistItem(){
-        manager.postBucketlistItem();
+    public void postBucketlistItem(String activity){
+        manager.postBucketlistItem(activity);
     }
 
 

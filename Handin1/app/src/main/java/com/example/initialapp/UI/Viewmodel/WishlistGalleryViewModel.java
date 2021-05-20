@@ -17,6 +17,7 @@ public class WishlistGalleryViewModel extends AndroidViewModel {
 
     private IBucketListRepository bucketListRepository;
     private MutableLiveData<String> goalLabel;
+    private MutableLiveData<Boolean> goalCheckBox;
     private MutableLiveData<Integer> goalIconID;
 
     public WishlistGalleryViewModel(@NonNull Application application) {
@@ -25,6 +26,7 @@ public class WishlistGalleryViewModel extends AndroidViewModel {
         // Bucket List goal values
         goalLabel = new MutableLiveData<>();
         goalIconID = new MutableLiveData<>();
+        goalCheckBox = new MutableLiveData<>();
 
         bucketListRepository = BucketListRepository.getInstance(application);
 
@@ -32,10 +34,6 @@ public class WishlistGalleryViewModel extends AndroidViewModel {
 
     public void getGoal() {
         bucketListRepository.getGoal();
-    }
-
-    public void searchForGoal(String s) {
-        bucketListRepository.searchForGoal(s);
     }
 
     public MutableLiveData<String> getGoalLabel() {
@@ -52,6 +50,10 @@ public class WishlistGalleryViewModel extends AndroidViewModel {
 
     public LiveData<List<BucketListGoals>> getAllGoals() {
         return bucketListRepository.getAllGoals();
+    }
+
+    public MutableLiveData<Boolean> getGoalCheckBox() {
+        return goalCheckBox;
     }
 
     public void delete(BucketListGoals bucketListGoals){

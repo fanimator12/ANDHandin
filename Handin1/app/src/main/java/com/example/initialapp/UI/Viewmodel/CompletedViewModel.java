@@ -17,6 +17,7 @@ public class CompletedViewModel extends AndroidViewModel {
 
     private IBucketListRepository bucketListRepository;
     private MutableLiveData<String> goalLabel;
+    private MutableLiveData<Boolean> goalCheckBox;
     private MutableLiveData<Integer> goalIconID;
 
     // TODO the whole app crashes just beacuse of requestmanager, solve ASAP
@@ -28,6 +29,7 @@ public class CompletedViewModel extends AndroidViewModel {
         // Bucket List goal values
         goalLabel = new MutableLiveData<>();
         goalIconID = new MutableLiveData<>();
+        goalCheckBox = new MutableLiveData<>();
 
         bucketListRepository = BucketListRepository.getInstance(application);
 
@@ -35,10 +37,6 @@ public class CompletedViewModel extends AndroidViewModel {
 
     public void getGoal() {
         bucketListRepository.getGoal();
-    }
-
-    public void searchForGoal(String s) {
-        bucketListRepository.searchForGoal(s);
     }
 
     public MutableLiveData<String> getGoalLabel() {
@@ -49,6 +47,10 @@ public class CompletedViewModel extends AndroidViewModel {
         return goalIconID;
     }
 
+    public MutableLiveData<Boolean> getGoalCheckBox() {
+        return goalCheckBox;
+    }
+
     public void fetchData(){
         bucketListRepository.getAllGoals();
     }
@@ -56,6 +58,7 @@ public class CompletedViewModel extends AndroidViewModel {
     public LiveData<List<BucketListGoals>> getCompletedGoals() {
         return bucketListRepository.getCompletedGoals();
     }
+
 
     public void delete(BucketListGoals bucketListGoals){
         bucketListRepository.delete(bucketListGoals);

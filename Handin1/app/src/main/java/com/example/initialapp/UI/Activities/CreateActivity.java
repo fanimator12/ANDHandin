@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.initialapp.Database.BucketListGoals;
 import com.example.initialapp.R;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Auth;
 import com.example.initialapp.UI.Viewmodel.CreateViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -47,11 +48,8 @@ public class CreateActivity extends AppCompatActivity {
         //Used for loading panel
         findViewById(R.id.loadingPanel).setVisibility(View.GONE);
 
-        //Used to closed the keyboard after input
-        methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-
         try {
-            createViewModel.getBucketlistItem().observe(this, new Observer<String>() {
+            createViewModel.getActivity().observe(this, new Observer<String>() {
                 @Override
                 public void onChanged(@Nullable String s) {
                     try {
@@ -72,6 +70,9 @@ public class CreateActivity extends AppCompatActivity {
             findViewById(R.id.loadingPanel).setVisibility(View.INVISIBLE);
         }
 
+        //Used to closed the keyboard after input
+        methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+
         //Used to add new bucketlist to user's wishlist
         addToWishListButton.setOnClickListener(this::saveBucketlist);
 
@@ -86,13 +87,17 @@ public class CreateActivity extends AppCompatActivity {
         try{
             String activity = nameActivity.getText().toString();
 
-
             if (activity.trim().isEmpty()){
                 Toast.makeText(this,"Please insert activity", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            createViewModel.postBucketlistItem();
+            String text = "Update values...";
+            int duration = Toast.LENGTH_SHORT;
+            Toast.makeText(this, text, duration).show();
+
+            //TODO postBucketlistItem doesnt work
+            createViewModel.postBucketlistItem(activity);
             createViewModel.fetchData();
 
             setResult(RESULT_OK);
@@ -100,8 +105,10 @@ public class CreateActivity extends AppCompatActivity {
         }
         catch(Exception e){
             e.printStackTrace();
-            Toast.makeText(this,"Something went wrong",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Something went wrong while saving",Toast.LENGTH_SHORT).show();
             findViewById(R.id.loadingPanel).setVisibility(View.GONE);
         }
     }
+
+
 }

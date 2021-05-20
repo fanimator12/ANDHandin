@@ -18,9 +18,10 @@ public class AllGalleryViewModel extends AndroidViewModel {
 
     IBucketListRepository bucketListRepository;
     private MutableLiveData<String> goalLabel;
+    private MutableLiveData<Boolean> goalCheckBox;
     private MutableLiveData<Integer> goalIconID;
 
-    RequestManager requestManager = RequestManager.getInstance();
+    RequestManager manager = RequestManager.getInstance();
 
     public AllGalleryViewModel(@NonNull Application application) {
         super(application);
@@ -28,18 +29,17 @@ public class AllGalleryViewModel extends AndroidViewModel {
         // Bucket List goal values
         goalLabel = new MutableLiveData<>();
         goalIconID = new MutableLiveData<>();
+        goalCheckBox = new MutableLiveData<>();
 
         bucketListRepository = BucketListRepository.getInstance(application);
 
-        requestManager.getBucketlist();
+        //TODO getBucketList doesnt work
+//        manager.getBucketlist();
+        fetchData();
     }
 
     public void getGoal() {
         bucketListRepository.getGoal();
-    }
-
-    public void searchForGoal(String s) {
-        bucketListRepository.searchForGoal(s);
     }
 
     public MutableLiveData<String> getGoalLabel() {
@@ -50,8 +50,13 @@ public class AllGalleryViewModel extends AndroidViewModel {
         return goalIconID;
     }
 
+    public MutableLiveData<Boolean> getGoalCheckBox() {
+        return goalCheckBox;
+    }
+
     public void fetchData(){
         bucketListRepository.getAllGoals();
+        bucketListRepository.getCompletedGoals();
     }
 
     public LiveData<List<BucketListGoals>> getAllGoals() {
@@ -64,6 +69,11 @@ public class AllGalleryViewModel extends AndroidViewModel {
 
     public void deleteAllGoals() {
         bucketListRepository.deleteAllGoals();
+    }
+
+
+    public void getBucketlistItem(){
+        manager.getBucketlistItem();
     }
 
 }

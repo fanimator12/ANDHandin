@@ -9,7 +9,6 @@ public class BucketListGoals {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-
     @ColumnInfo(name = "user")
     private String user;
     @ColumnInfo(name = "goal")

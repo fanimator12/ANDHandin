@@ -7,9 +7,7 @@ import com.example.initialapp.Database.BucketListGoals;
 import java.util.List;
 
 public interface IBucketListRepository {
-    void getGoal();
-
-    void searchForGoal(String s);
+    LiveData<BucketListGoals> getGoal();
 
     LiveData<List<BucketListGoals>> getAllGoals();
 

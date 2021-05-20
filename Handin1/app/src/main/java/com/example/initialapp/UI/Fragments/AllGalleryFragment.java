@@ -33,7 +33,7 @@ public class AllGalleryFragment extends Fragment {
     GoalAdapter mGoalAdapter;
     private TextView error;
 
-    private MutableLiveData<List<String>> list = new MutableLiveData<>();
+    private MutableLiveData<List<String>> goals = new MutableLiveData<>();
 
     private AllGalleryViewModel allGalleryViewModel;
 
@@ -107,7 +107,7 @@ public class AllGalleryFragment extends Fragment {
     }
 
     private void initializeFragmentsValues() {
-        ArrayList<BucketListGoals> goals = new ArrayList<>();
+        goals = new MutableLiveData<>();
 
         error = allGalleryView.findViewById(R.id.error);
 
@@ -117,5 +117,10 @@ public class AllGalleryFragment extends Fragment {
         mGoalList.setHasFixedSize(true);
         mGoalAdapter = new GoalAdapter();
         mGoalList.setAdapter(mGoalAdapter);
+    }
+
+    //TODO
+    private void searchGoal(){
+
     }
 }

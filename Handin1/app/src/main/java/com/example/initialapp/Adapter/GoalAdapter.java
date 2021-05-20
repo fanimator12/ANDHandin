@@ -67,8 +67,4 @@ public class GoalAdapter extends RecyclerView.Adapter<GoalAdapter.ViewHolder> {
         }
 
     }
-
-    public interface OnListGoalClickListener {
-        void onListGoalClick(int clickedGoalIndex);
-    }
 }
