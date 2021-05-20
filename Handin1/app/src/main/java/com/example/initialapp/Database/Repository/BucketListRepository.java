@@ -9,6 +9,8 @@ import com.example.initialapp.Database.Authorization;
 import com.example.initialapp.Database.BucketListDAO;
 import com.example.initialapp.Database.BucketListDatabase;
 import com.example.initialapp.Database.BucketListGoals;
+import com.example.initialapp.RemoteSource.WebAPI.Model.Token;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

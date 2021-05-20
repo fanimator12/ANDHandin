@@ -69,4 +69,8 @@ public class CompletedViewModel extends AndroidViewModel {
     public void delete(BucketListGoals bucketListGoals){
         bucketListRepository.delete(bucketListGoals);
     }
+
+    public void deleteAllGoals() {
+        bucketListRepository.deleteAllGoals();
+    }
 }

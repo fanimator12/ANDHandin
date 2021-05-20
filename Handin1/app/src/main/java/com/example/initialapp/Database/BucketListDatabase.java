@@ -6,6 +6,8 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.google.android.gms.auth.api.Auth;
+
 @Database(entities = {BucketListGoals.class, Authorization.class}, version = 7, exportSchema = false)
 public abstract class BucketListDatabase extends RoomDatabase {
 
