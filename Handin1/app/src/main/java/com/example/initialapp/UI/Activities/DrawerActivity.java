@@ -26,7 +26,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class DrawerActivity extends AppCompatActivity  {
 
     private AppBarConfiguration mAppBarConfiguration;
-    private View drawerView;
     private NavController navController;
     private DrawerLayout drawer;
     private NavigationView navigationView;
