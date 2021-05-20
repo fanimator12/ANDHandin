@@ -9,16 +9,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.initialapp.R;
-import com.example.initialapp.RemoteSource.RequestManager;
-import com.example.initialapp.RemoteSource.WebAPI.Model.Auth;
-import com.example.initialapp.RemoteSource.WebAPI.Model.Bucketlist;
-import com.example.initialapp.UI.Viewmodel.AllGalleryViewModel;
 import com.example.initialapp.UI.Viewmodel.LoginViewModel;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
