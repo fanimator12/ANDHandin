@@ -54,19 +54,20 @@ public class WishlistGalleryViewModel extends AndroidViewModel {
     }
 
     public void fetchData(){
-        bucketListRepository.getAllGoals();
+        bucketListRepository.getWishlist();
     }
 
     public LiveData<List<BucketListGoals>> getAllGoals() {
-        return bucketListRepository.getAllGoals();
+        return bucketListRepository.getWishlist();
     }
 
     public MutableLiveData<Boolean> getGoalCheckBox() {
         return goalCheckBox;
     }
 
-    public void delete(BucketListGoals bucketListGoals){
-        bucketListRepository.delete(bucketListGoals);
+    public void update(BucketListGoals bucketListGoals){
+        bucketListGoals.setCompleted(true);
+        bucketListRepository.update(bucketListGoals);
     }
 
     public void deleteAllGoals() {
