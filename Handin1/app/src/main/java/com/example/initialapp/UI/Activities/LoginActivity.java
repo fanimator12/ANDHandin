@@ -36,8 +36,9 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             loginViewModel.postLogin();
-        }
             goToMainActivity();
+        }
+
     }
 
     private void goToMainActivity() {
